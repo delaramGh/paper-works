@@ -176,7 +176,7 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
             human_effort, acc = report(csv_name, y_train.shape[0])
             print("+ PARAMETERS-> model: ", model_, ", Th: ", threshold, ", split_1: ", split1, ", split_2: ", split2)
             print("\n")
-            param = [model, threshold]
+            param = [model_, threshold]
             return human_effort, acc, param
     
 
