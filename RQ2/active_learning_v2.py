@@ -16,10 +16,23 @@ from sklearn.svm import SVC
 from sklearn.utils import shuffle
 from svm_classifier_function import preprocessing
 
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.cluster import KMeans
+from sklearn import tree
+
 
 def model_train(x_train, y_train, model):
     if model == "SVM":
         clf = make_pipeline(StandardScaler(), SVC(gamma='auto', probability=True))
+    if model == "Logistic Regression":
+        clf = LogisticRegression()
+    if model == "Random Forest":
+        clf = RandomForestClassifier(n_estimators=200, random_state=0)
+    if model == "Decision Tree":
+        clf = tree.DecisionTreeClassifier()
+    if model == "Kmeans":
+        clf = KMeans(n_clusters=2)
     clf.fit(x_train, y_train)
     return clf
 
@@ -123,12 +136,17 @@ def report(df_name, manual):
     active_learning = df["machine_labels"]
     ok = np.sum(true_label==active_learning)
     all = len(true_label)
+
+    human_effort = (100*manual/all)
+    acc = 100*ok/all
+
     print("***    REPORT    ***")
     print("+ number of automatically labeled data: ", all - manual, " out of ", all)
-    print("+ human effort is: ", str(100*manual/all)[:4])
-    print("+ final accuracy is: ", str(100*ok/all)[:4])
+    print("+ human effort is: ", str(human_effort)[:4])
+    print("+ final accuracy is: ", str(acc)[:4])
     print("+ number of missed data: ", all-ok, "(", str(100*(all-ok)/all)[:4], "%)")
     
+    return human_effort, acc
 
 
 ###############################################################
@@ -142,7 +160,7 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
     if print_:
         print("\n")
 
-    for i in range(10):
+    for i in range(100):
         if print_:
             print("* MAIN LOOP - ", i, "th iteration - ", str(100*labeled_samples/number_of_samples)[:2], "% progress")
         x, y = new_training_data(csv_name, split2, print_)
@@ -155,10 +173,11 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
             print("\n")
 
         if labeled_samples == number_of_samples:
-            report(csv_name, y_train.shape[0])
-            print("+ parameter: Th: ", threshold, ", split_1: ", split1, ", split_2: ", split2)
+            human_effort, acc = report(csv_name, y_train.shape[0])
+            print("+ PARAMETERS-> model: ", model_, ", Th: ", threshold, ", split_1: ", split1, ", split_2: ", split2)
             print("\n")
-            return 0
+            param = [model, threshold]
+            return human_effort, acc, param
     
 
 ###############################################################
