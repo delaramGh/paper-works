@@ -17,8 +17,9 @@ from sklearn.utils import shuffle
 from svm_classifier_function import preprocessing
 
 
-def model_train(x_train, y_train):
-    clf = make_pipeline(StandardScaler(), SVC(gamma='auto', probability=True))
+def model_train(x_train, y_train, model):
+    if model == "SVM":
+        clf = make_pipeline(StandardScaler(), SVC(gamma='auto', probability=True))
     clf.fit(x_train, y_train)
     return clf
 
@@ -131,12 +132,12 @@ def report(df_name, manual):
 
 
 ###############################################################
-def active_labeling(csv_name, threshold, split1=0.2, split2=0.05, print_=False):
+def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_=False):
     number_of_samples, (x_train, y_train) = create_dataset(csv_name, split1, print_)
     labeled_samples = len(y_train)
     if print_:
         print("shape: ", x_train.shape, y_train.shape)
-    model = model_train(x_train, y_train)
+    model = model_train(x_train, y_train, model_)
     labeled_samples += predict(model, csv_name, threshold, print_)
     if print_:
         print("\n")
@@ -148,7 +149,7 @@ def active_labeling(csv_name, threshold, split1=0.2, split2=0.05, print_=False):
         labeled_samples += len(y)
         x_train = np.concatenate((x_train, x))
         y_train = np.concatenate((y_train, y))
-        model = model_train(x_train, y_train)
+        model = model_train(x_train, y_train, model_)
         labeled_samples += predict(model, csv_name, threshold, print_)
         if print_:
             print("\n")
@@ -161,6 +162,8 @@ def active_labeling(csv_name, threshold, split1=0.2, split2=0.05, print_=False):
     
 
 ###############################################################
-active_labeling("test_dataset.csv", 0.9, split1=0.2, split2=0.05, print_=False)
+if __name__ == "__main__":
+    models = ["SVM"]
+    active_labeling("test_dataset.csv", models[0], 0.9, split1=0.2, split2=0.05, print_=False)
 
 
