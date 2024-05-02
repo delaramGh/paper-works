@@ -23,7 +23,7 @@ def model_train(x_train, y_train):
     return clf
 
 
-def create_dataset(df_name, split=0.1):
+def create_dataset(df_name, split, print_):
     df = pd.read_csv(df_name)
     size = df.shape[0]
     #preprocessing
@@ -46,7 +46,8 @@ def create_dataset(df_name, split=0.1):
 
     x_train = np.array([np.array([df["PSNR"][i], df["SSIM"][i], df["CPL"][i], df["CS"][i]]) for i in range(int(size*split))])
     y_train = np.array(df["label"][:int(split*size)])
-    print(y_train.shape[0], " new data are labeled manually!")
+    if print_:
+        print(y_train.shape[0], " new data are labeled manually!")
 
     label = np.concatenate((y_train , -1 * np.ones(size-len(y_train))))
     df["machine_labels"] = label
@@ -55,7 +56,7 @@ def create_dataset(df_name, split=0.1):
     return size, (x_train, y_train)
     
 
-def predict(model, df_name, threshold=0.95):
+def predict(model, df_name, threshold, print_):
     #this function uses the trained model to label the data that we are confident about.
     #it writes the labels in the csv file.
     df = pd.read_csv(df_name)
@@ -74,11 +75,12 @@ def predict(model, df_name, threshold=0.95):
                 cnt += 1
     df["machine_labels"] = labels
     df.to_csv(df_name)
-    print(cnt, " new data are labeled automatically! :)")
+    if print_:
+        print(cnt, " new data are labeled automatically! :)")
     return cnt
                 
 
-def new_train_data(df_name, split=0.05):
+def new_training_data(df_name, split, print_):
     df = pd.read_csv(df_name)
     labels = np.copy(df["machine_labels"])
 
@@ -97,7 +99,8 @@ def new_train_data(df_name, split=0.05):
     y_train = np.array(y_train)
     df["machine_labels"] = labels
     df.to_csv(df_name)
-    print(y_train.shape[0], " new data are labeled manually!")
+    if print_:
+        print(y_train.shape[0], " new data are labeled manually!")
     return x_train, y_train
 
 
@@ -118,43 +121,46 @@ def report(df_name, manual):
     true_label = df["label"]
     active_learning = df["machine_labels"]
     ok = np.sum(true_label==active_learning)
+    all = len(true_label)
     print("***    REPORT    ***")
-    print("+ number of automatically labeled data: ", len(true_label) - manual, " out of ", len(true_label))
-    print("+ human effort is: ", str(100*manual/len(true_label))[:4])
-    print("+ final accuracy is: ", str(100*ok/len(true_label))[:4])
-    print("+ number of missed data: ", len(true_label)-ok)
-    print("\n")
+    print("+ number of automatically labeled data: ", all - manual, " out of ", all)
+    print("+ human effort is: ", str(100*manual/all)[:4])
+    print("+ final accuracy is: ", str(100*ok/all)[:4])
+    print("+ number of missed data: ", all-ok, "(", str(100*(all-ok)/all)[:4], "%)")
+    
 
 
 ###############################################################
-def main():
-    csv_name = "test_dataset.csv"
-    threshold = 0.95
-
-    number_of_samples, (x_train, y_train) = create_dataset(csv_name, split=0.2)
+def active_labeling(csv_name, threshold, split1=0.2, split2=0.05, print_=False):
+    number_of_samples, (x_train, y_train) = create_dataset(csv_name, split1, print_)
     labeled_samples = len(y_train)
-    print("shape: ", x_train.shape, y_train.shape)
+    if print_:
+        print("shape: ", x_train.shape, y_train.shape)
     model = model_train(x_train, y_train)
-    # __new_model_eval__(model, csv_name)
-    labeled_samples += predict(model, csv_name, threshold)
-    print("\n")
-
+    labeled_samples += predict(model, csv_name, threshold, print_)
+    if print_:
+        print("\n")
 
     for i in range(10):
-        print("* MAIN LOOP - ", i, "th iteration - ", str(100*labeled_samples/number_of_samples)[:2], "% progress")
-        x, y = new_train_data(csv_name, split=0.05)
+        if print_:
+            print("* MAIN LOOP - ", i, "th iteration - ", str(100*labeled_samples/number_of_samples)[:2], "% progress")
+        x, y = new_training_data(csv_name, split2, print_)
         labeled_samples += len(y)
         x_train = np.concatenate((x_train, x))
         y_train = np.concatenate((y_train, y))
         model = model_train(x_train, y_train)
-        labeled_samples += predict(model, csv_name, threshold)
-        print("\n")
+        labeled_samples += predict(model, csv_name, threshold, print_)
+        if print_:
+            print("\n")
 
         if labeled_samples == number_of_samples:
             report(csv_name, y_train.shape[0])
+            print("+ parameter: Th: ", threshold, ", split_1: ", split1, ", split_2: ", split2)
+            print("\n")
             return 0
     
 
 ###############################################################
-main()
+active_labeling("test_dataset.csv", 0.9, split1=0.2, split2=0.05, print_=False)
+
 
