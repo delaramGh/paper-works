@@ -145,12 +145,14 @@ def report(df_name, manual):
     print("+ human effort is: ", str(human_effort)[:4])
     print("+ final accuracy is: ", str(acc)[:4])
     print("+ number of missed data: ", all-ok, "(", str(100*(all-ok)/all)[:4], "%)")
+    print("\n")
     
     return human_effort, acc
 
 
 ###############################################################
 def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_=False):
+    print("***  PARAMETERS  ***\nmodel: ", model_, ", Th: ", threshold, ", split_1: ", split1, ", split_2: ", split2)
     number_of_samples, (x_train, y_train) = create_dataset(csv_name, split1, print_)
     labeled_samples = len(y_train)
     if print_:
@@ -159,8 +161,13 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
     labeled_samples += predict(model, csv_name, threshold, print_)
     if print_:
         print("\n")
-
     for i in range(100):
+
+        if labeled_samples == number_of_samples:
+            human_effort, acc = report(csv_name, y_train.shape[0])
+            param = [model_, threshold]
+            return human_effort, acc, param
+        
         if print_:
             print("* MAIN LOOP - ", i, "th iteration - ", str(100*labeled_samples/number_of_samples)[:2], "% progress")
         x, y = new_training_data(csv_name, split2, print_)
@@ -172,12 +179,7 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
         if print_:
             print("\n")
 
-        if labeled_samples == number_of_samples:
-            human_effort, acc = report(csv_name, y_train.shape[0])
-            print("+ PARAMETERS-> model: ", model_, ", Th: ", threshold, ", split_1: ", split1, ", split_2: ", split2)
-            print("\n")
-            param = [model_, threshold]
-            return human_effort, acc, param
+            
     
 
 ###############################################################
