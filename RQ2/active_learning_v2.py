@@ -165,7 +165,7 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
 
         if labeled_samples == number_of_samples:
             human_effort, acc = report(csv_name, y_train.shape[0])
-            param = [model_, threshold]
+            param = [model_, threshold, split1, split2]
             return human_effort, acc, param
         
         if print_:
