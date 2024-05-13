@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the data from the CSV file
-file_path = 'raw_results - Copy.csv'
+file_path = 'exp_s1_changing - Copy.csv'
 data = pd.read_csv(file_path)
 
 
@@ -19,7 +19,7 @@ ax.set_xlabel('Human Effort')
 ax.set_ylabel('Accuracy (%)')
 ax.set_title('Accuracy vs Human Effort for Different Models (with Lines)')
 ax.legend(title='Model')
-ax.invert_xaxis()  # Reverse the y-axis
+# ax.invert_xaxis()  # Reverse the y-axis
 plt.show()
 
 
