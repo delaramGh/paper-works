@@ -46,8 +46,10 @@ def create_dataset(df_name, split, print_):
         ssim = []
         cpl = []
         cs = []
+        gen_path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\taoyu dataset\\taoyu_gen_dataset\\"
+        org_path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\taoyu dataset\\taoyu_org_dataset\\"
         for i in tqdm(range(size)):
-            psnr_, ssim_, cpl_, cs_ = preprocessing(df["original"][i], df["gen"][i])
+            psnr_, ssim_, cpl_, cs_ = preprocessing(org_path+df["original"][i], gen_path+df["gen"][i])
             psnr.append(psnr_)
             ssim.append(ssim_)
             cpl.append(cpl_)
@@ -185,6 +187,6 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
 ###############################################################
 if __name__ == "__main__":
     models = ["SVM"]
-    active_labeling("test_dataset.csv", models[0], 0.9, split1=0.2, split2=0.05, print_=False)
+    active_labeling("..\\taoyu dataset\\taoyu_dataset_modified.csv", models[0], 0.9, split1=0.2, split2=0.05, print_=True)
 
 

@@ -2,7 +2,7 @@ from active_learning_v2 import active_labeling
 import pandas as pd
 from tqdm import tqdm
 
-models = ["Decision Tree", "SVM", "Logistic Regression", "Random Forest"] #"Kmeans"
+models = ["Random Forest"] #"Decision Tree", "SVM", "Logistic Regression"] #"Kmeans"
 thresholds = [0.8, 0.85, 0.9, 0.95, 0.99]
 split1 = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
 split2 = [0.01, 0.03, 0.05, 0.08, 0.1, 0.15]
