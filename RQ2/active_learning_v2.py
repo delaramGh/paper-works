@@ -186,7 +186,7 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
 
 ###############################################################
 if __name__ == "__main__":
-    models = ["SVM"]
-    active_labeling("..\\cifar dataset\\test_dataset.csv", models[0], 0.9, split1=0.2, split2=0.05, print_=True)
+    models = ["Logistic Regression"]
+    active_labeling("..\\cifar dataset\\test_dataset.csv", models[0], 0.95, split1=0.1, split2=0.01, print_=True)
 
 

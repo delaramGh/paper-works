@@ -21,7 +21,9 @@ def compute_glcm_features(image, distances, angles):
     return metrics
 
 ##  Data...
-df = pd.read_csv("ref_csv_.csv")
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
+
+df = pd.read_csv(csv_file)
 img_shape = (512, 320)  #  (224, 224)
 dataset_length = len(df)
 
@@ -31,8 +33,7 @@ similarity = []
 for i in tqdm(range(dataset_length)):
     img_org_ = cv2.resize(cv2.imread(df["original"][i]), img_shape)
     img_org.append(img_org_)
-    #**************CHANGE**************
-    img_gen_ = cv2.resize(cv2.imread(df["moderate_fog"][i]), img_shape)
+    img_gen_ = cv2.resize(cv2.imread(df["gen"][i]), img_shape)
     img_gen.append(img_gen_)
 
     f1 = compute_glcm_features(img_org_, distances=[1], angles=[0])
@@ -43,11 +44,9 @@ img_org = np.array(img_org)
 img_gen = np.array(img_gen)
 print(img_org.shape, img_gen.shape)
 
-#back-up
-df.to_csv("ref_csv_BACKUP.csv", index=False)
-#**************CHANGE**************
-df["MF_TSI"] = similarity
-print(df["MF_TSI"])
-df.to_csv("ref_csv_.csv", index=False)
+
+df["TSI"] = similarity
+print(df["TSI"])
+df.to_csv(csv_file, index=False)
 
 
