@@ -9,7 +9,7 @@ def my_mse(img1, img2):
     err = np.sum(cv2.subtract(img1, img2)**2)
     return err/float(w*h*c)
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 
 
 df = pd.read_csv(csv_file)
