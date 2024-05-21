@@ -163,8 +163,7 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
     labeled_samples += predict(model, csv_name, threshold, print_)
     if print_:
         print("\n")
-    for i in range(100):
-
+    for i in range(500):
         if labeled_samples == number_of_samples:
             human_effort, acc = report(csv_name, y_train.shape[0])
             param = [model_, threshold, split1, split2]
@@ -183,7 +182,6 @@ def active_labeling(csv_name, model_, threshold, split1=0.2, split2=0.05, print_
 
             
     
-
 ###############################################################
 if __name__ == "__main__":
     models = ["Logistic Regression"]

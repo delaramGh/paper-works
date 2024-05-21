@@ -2,7 +2,7 @@ from active_learning_v2 import active_labeling
 import pandas as pd
 from tqdm import tqdm
 
-models = ["Logistic Regression", "Random Forest"] #"Decision Tree", "SVM"
+models = ["Random Forest"] #"Decision Tree", "SVM", "Logistic Regression",
 thresholds = [0.8, 0.85, 0.9, 0.95, 0.99]
 split1 = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
 split2 = [0.01, 0.03, 0.05, 0.08, 0.1, 0.15]
@@ -17,12 +17,6 @@ for model in models:
     for th in tqdm(thresholds):
         for s2 in tqdm(split2):
             for s1 in split1:
-
-                #debug
-                s1 = 0.1
-                s2 = 0.01
-                th = 0.95
-
                 human_effort, acc, param = active_labeling(dataset, model, th, split1=s1, split2=s2, print_=False)
                 he.append(human_effort)
                 accs.append(acc)

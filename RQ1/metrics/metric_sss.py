@@ -15,7 +15,7 @@ model.eval()
 # # Step 2: Initialize the inference transforms
 preprocess = weights.transforms()
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 
 
 df = pd.read_csv(csv_file)
