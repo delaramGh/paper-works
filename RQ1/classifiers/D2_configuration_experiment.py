@@ -14,27 +14,26 @@ import pickle
 from classification_all import create_x_y_v2, fit_and_acc
 
 
-config_4 = ["PSNR", "CS", "SSIM", "CPL"]
+config_4 = ["Hist_int", "CS", "KL", "CPL"]
 
-config_31 = ["CS", "SSIM", "CPL"]
-config_32 = ["PSNR", "SSIM", "CPL"]
-config_33 = ["PSNR", "CS", "CPL"]
-config_34 = ["PSNR", "CS", "SSIM"]
+config_31 = ["CS", "KL", "CPL"]
+config_32 = ["Hist_int", "KL", "CPL"]
+config_33 = ["Hist_int", "CS", "CPL"]
+config_34 = ["Hist_int", "CS", "KL"]
 
-config_21 = ["PSNR", "CS"]
-config_22 = ["PSNR", "SSIM"]
-config_23 = ["PSNR","CPL"]
-config_24 = ["CS", "SSIM"]
+config_21 = ["Hist_int", "CS"]
+config_22 = ["Hist_int", "KL"]
+config_23 = ["Hist_int","CPL"]
+config_24 = ["CS", "KL"]
 config_25 = ["CS", "CPL"]
-config_26 = ["SSIM", "CPL"]
+config_26 = ["KL", "CPL"]
 
-config_11 = ["PSNR"]
+config_11 = ["Hist_int"]
 config_12 = ["CS"]
-config_13 = ["SSIM"]
+config_13 = ["KL"]
 config_14 = ["CPL"]
 
 configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
-config_name = ["config_11","config_12","config_13","config_14","config_21","config_22","config_23","config_24","config_25","config_26","config_31","config_32","config_33","config_34", "config_4",]
 model_names = ["logistic-regression", "SVM", "random-forest", "decision-tree"] 
 models = [LogisticRegression(), make_pipeline(StandardScaler(), SVC(gamma='auto')), RandomForestClassifier(n_estimators=200, random_state=0), tree.DecisionTreeClassifier()]#, KMeans(n_clusters=2, n_init=5)]
 
@@ -49,7 +48,7 @@ for j in range(len(configs)):
     y_test  = Y[n:]
     for i in range(len(models)):
         _, acc = fit_and_acc(models[i], model_names[i], x_train, y_train, x_test, y_test)
-        result.append([model_names[i], acc, config_name[j]])
+        result.append([model_names[i], acc, configs[j]])
         print("\n")
 
 

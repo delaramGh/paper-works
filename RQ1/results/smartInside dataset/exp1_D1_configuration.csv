@@ -1,121 +1,61 @@
 model,accuracy,config
-,,
-logistic-regression,0.750769231,config_11
-,,
-SVM,0.756923077,config_11
-,,
-random-forest,0.624615385,config_11
-,,
-decision-tree,0.624615385,config_11
-,,
-logistic-regression,0.88,config_12
-,,
-SVM,0.898461538,config_12
-,,
-random-forest,0.849230769,config_12
-,,
-decision-tree,0.849230769,config_12
-,,
-logistic-regression,0.793846154,config_13
-,,
-SVM,0.796923077,config_13
-,,
-random-forest,0.689230769,config_13
-,,
-decision-tree,0.689230769,config_13
-,,
-logistic-regression,0.793846154,config_14
-,,
-SVM,0.796923077,config_14
-,,
-random-forest,0.756923077,config_14
-,,
-decision-tree,0.756923077,config_14
-,,
-logistic-regression,0.889230769,config_21
-,,
-SVM,0.901538462,config_21
-,,
-random-forest,0.895384615,config_21
-,,
-decision-tree,0.855384615,config_21
-,,
-logistic-regression,0.803076923,config_22
-,,
-SVM,0.806153846,config_22
-,,
-random-forest,0.793846154,config_22
-,,
-decision-tree,0.698461538,config_22
-,,
-logistic-regression,0.821538462,config_23
-,,
-SVM,0.821538462,config_23
-,,
-random-forest,0.790769231,config_23
-,,
-decision-tree,0.775384615,config_23
-,,
-logistic-regression,0.886153846,config_24
-,,
-SVM,0.895384615,config_24
-,,
-random-forest,0.88,config_24
-,,
-decision-tree,0.836923077,config_24
-,,
-logistic-regression,0.889230769,config_25
-,,
-SVM,0.898461538,config_25
-,,
-random-forest,0.895384615,config_25
-,,
-decision-tree,0.855384615,config_25
-,,
-logistic-regression,0.815384615,config_26
-,,
-SVM,0.827692308,config_26
-,,
-random-forest,0.784615385,config_26
-,,
-decision-tree,0.707692308,config_26
-,,
-logistic-regression,0.889230769,config_31
-,,
-SVM,0.898461538,config_31
-,,
-random-forest,0.889230769,config_31
-,,
-decision-tree,0.849230769,config_31
-,,
-logistic-regression,0.827692308,config_32
-,,
-SVM,0.833846154,config_32
-,,
-random-forest,0.809230769,config_32
-,,
-decision-tree,0.753846154,config_32
-,,
-logistic-regression,0.895384615,config_33
-,,
-SVM,0.889230769,config_33
-,,
-random-forest,0.904615385,config_33
-,,
-decision-tree,0.84,config_33
-,,
-logistic-regression,0.889230769,config_34
-,,
-SVM,0.883076923,config_34
-,,
-random-forest,0.898461538,config_34
-,,
-decision-tree,0.867692308,config_34
-,,
-logistic-regression,0.895384615,config_4
-,,
-SVM,0.889230769,config_4
-,,
-random-forest,0.895384615,config_4
-,,
-decision-tree,0.846153846,config_4
+random-forest,0.904615385,"['PSNR', 'CS', 'CPL']"
+SVM,0.901538462,"['PSNR', 'CS']"
+SVM,0.898461538,['CS']
+SVM,0.898461538,"['CS', 'CPL']"
+SVM,0.898461538,"['CS', 'SSIM', 'CPL']"
+random-forest,0.898461538,"['PSNR', 'CS', 'SSIM']"
+random-forest,0.895384615,"['PSNR', 'CS']"
+SVM,0.895384615,"['CS', 'SSIM']"
+random-forest,0.895384615,"['CS', 'CPL']"
+logistic-regression,0.895384615,"['PSNR', 'CS', 'CPL']"
+logistic-regression,0.895384615,"['PSNR', 'CS', 'SSIM', 'CPL']"
+random-forest,0.895384615,"['PSNR', 'CS', 'SSIM', 'CPL']"
+logistic-regression,0.889230769,"['PSNR', 'CS']"
+logistic-regression,0.889230769,"['CS', 'CPL']"
+logistic-regression,0.889230769,"['CS', 'SSIM', 'CPL']"
+random-forest,0.889230769,"['CS', 'SSIM', 'CPL']"
+SVM,0.889230769,"['PSNR', 'CS', 'CPL']"
+logistic-regression,0.889230769,"['PSNR', 'CS', 'SSIM']"
+SVM,0.889230769,"['PSNR', 'CS', 'SSIM', 'CPL']"
+logistic-regression,0.886153846,"['CS', 'SSIM']"
+SVM,0.883076923,"['PSNR', 'CS', 'SSIM']"
+logistic-regression,0.88,['CS']
+random-forest,0.88,"['CS', 'SSIM']"
+decision-tree,0.870769231,"['CS', 'SSIM', 'CPL']"
+decision-tree,0.858461538,"['CS', 'CPL']"
+decision-tree,0.858461538,"['PSNR', 'CS', 'SSIM']"
+decision-tree,0.852307692,"['PSNR', 'CS']"
+decision-tree,0.852307692,"['PSNR', 'CS', 'SSIM', 'CPL']"
+random-forest,0.849230769,['CS']
+decision-tree,0.849230769,['CS']
+decision-tree,0.846153846,"['PSNR', 'CS', 'CPL']"
+decision-tree,0.836923077,"['CS', 'SSIM']"
+SVM,0.833846154,"['PSNR', 'SSIM', 'CPL']"
+SVM,0.827692308,"['SSIM', 'CPL']"
+logistic-regression,0.827692308,"['PSNR', 'SSIM', 'CPL']"
+logistic-regression,0.821538462,"['PSNR', 'CPL']"
+SVM,0.821538462,"['PSNR', 'CPL']"
+logistic-regression,0.815384615,"['SSIM', 'CPL']"
+random-forest,0.809230769,"['PSNR', 'SSIM', 'CPL']"
+SVM,0.806153846,"['PSNR', 'SSIM']"
+logistic-regression,0.803076923,"['PSNR', 'SSIM']"
+SVM,0.796923077,['SSIM']
+SVM,0.796923077,['CPL']
+logistic-regression,0.793846154,['SSIM']
+logistic-regression,0.793846154,['CPL']
+random-forest,0.793846154,"['PSNR', 'SSIM']"
+random-forest,0.790769231,"['PSNR', 'CPL']"
+random-forest,0.784615385,"['SSIM', 'CPL']"
+decision-tree,0.769230769,"['PSNR', 'SSIM', 'CPL']"
+decision-tree,0.76,"['PSNR', 'CPL']"
+SVM,0.756923077,['PSNR']
+random-forest,0.756923077,['CPL']
+decision-tree,0.756923077,['CPL']
+logistic-regression,0.750769231,['PSNR']
+decision-tree,0.726153846,"['PSNR', 'SSIM']"
+decision-tree,0.698461538,"['SSIM', 'CPL']"
+random-forest,0.689230769,['SSIM']
+decision-tree,0.689230769,['SSIM']
+random-forest,0.624615385,['PSNR']
+decision-tree,0.624615385,['PSNR']

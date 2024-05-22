@@ -4,7 +4,7 @@ from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\configuration_dataset.csv"
 
 
 
@@ -33,10 +33,12 @@ for i in tqdm(range(dataset_length)):
     intersection.append(cv2.compareHist(hist_gen[i], hist_org[i], cv2.HISTCMP_INTERSECT))
     # overlap.append(cv2.compareHist(hist_gen[i], hist_org[i], cv2.HISTCMP_BHATTACHARYYA))
 
-df["Hist_correlation"] = correlation
+# df["Hist_correlation"] = correlation
 # df["MF_HistCmp_chi_squared"] = Chi_Squared
-df["Hist_intersection"] = intersection
+# df["Hist_intersection"] = intersection
 # df["MF_HistCmp_overlap"] = overlap
+
+df["Hist_int"] = intersection
 
 df.to_csv(csv_file)
 
