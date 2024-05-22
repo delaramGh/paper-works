@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 
 df = pd.read_csv(csv_file)
 
@@ -24,7 +24,7 @@ wd = df["WD"]
 wd = wd/max(wd)
 
 kl = np.copy(df["KL"])
-inf_ = kl[5]
+inf_ = kl[18]
 for i in range(len(kl)):
     if kl[i] == inf_:
         kl[i] = 100
@@ -53,9 +53,12 @@ metrics = [psnr, cpl, cs, ssim, mse, wd, kl, sss, tsi, hist_cor, hist_int, vae]
 matrix = np.zeros((len(metrics)))
 for i in range(len(metrics)):
         matrix[i] = np.corrcoef(metrics[i], labels)[1, 0]
-
-# matrix = np.corrcoef(metrics)
-
 df2 = pd.DataFrame(matrix)
-df2.to_csv("corrolation_label.csv")
+df2.to_csv("exp1_D2_corrolation_label.csv")
+
+
+matrix3 = np.corrcoef(metrics)
+
+df3 = pd.DataFrame(matrix3)
+df3.to_csv("exp1_D2_corrolation.csv")
 
