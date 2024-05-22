@@ -1,0 +1,61 @@
+model,accuracy,config
+SVM,0.85,"['CS', 'CPL']"
+SVM,0.85,"['CS', 'KL', 'CPL']"
+SVM,0.85,"['Hist_int', 'CS', 'CPL']"
+random-forest,0.84,"['CS', 'KL', 'CPL']"
+SVM,0.84,"['Hist_int', 'CS', 'KL', 'CPL']"
+logistic-regression,0.82,"['CS', 'CPL']"
+logistic-regression,0.82,"['Hist_int', 'CS', 'CPL']"
+random-forest,0.82,"['Hist_int', 'CS', 'CPL']"
+logistic-regression,0.82,"['Hist_int', 'CS', 'KL', 'CPL']"
+logistic-regression,0.81,['CPL']
+random-forest,0.81,"['CS', 'CPL']"
+logistic-regression,0.81,"['KL', 'CPL']"
+logistic-regression,0.81,"['CS', 'KL', 'CPL']"
+decision-tree,0.81,"['CS', 'KL', 'CPL']"
+random-forest,0.81,"['Hist_int', 'CS', 'KL', 'CPL']"
+logistic-regression,0.8,"['Hist_int', 'CPL']"
+logistic-regression,0.8,"['Hist_int', 'KL', 'CPL']"
+logistic-regression,0.79,['Hist_int']
+SVM,0.79,['Hist_int']
+logistic-regression,0.79,['CS']
+SVM,0.79,['CS']
+logistic-regression,0.79,['KL']
+SVM,0.79,['KL']
+SVM,0.79,['CPL']
+logistic-regression,0.79,"['Hist_int', 'CS']"
+SVM,0.79,"['Hist_int', 'CS']"
+logistic-regression,0.79,"['Hist_int', 'KL']"
+SVM,0.79,"['Hist_int', 'KL']"
+SVM,0.79,"['Hist_int', 'CPL']"
+logistic-regression,0.79,"['CS', 'KL']"
+SVM,0.79,"['CS', 'KL']"
+SVM,0.79,"['KL', 'CPL']"
+SVM,0.79,"['Hist_int', 'KL', 'CPL']"
+random-forest,0.79,"['Hist_int', 'KL', 'CPL']"
+logistic-regression,0.79,"['Hist_int', 'CS', 'KL']"
+SVM,0.79,"['Hist_int', 'CS', 'KL']"
+random-forest,0.78,['KL']
+decision-tree,0.77,['KL']
+random-forest,0.77,"['Hist_int', 'CPL']"
+decision-tree,0.77,"['Hist_int', 'CS', 'KL', 'CPL']"
+decision-tree,0.76,"['Hist_int', 'CS', 'CPL']"
+random-forest,0.73,['Hist_int']
+decision-tree,0.73,['Hist_int']
+random-forest,0.73,"['KL', 'CPL']"
+random-forest,0.73,"['Hist_int', 'CS', 'KL']"
+random-forest,0.72,"['Hist_int', 'CS']"
+random-forest,0.72,"['CS', 'KL']"
+decision-tree,0.72,"['CS', 'CPL']"
+random-forest,0.71,"['Hist_int', 'KL']"
+decision-tree,0.7,"['Hist_int', 'CPL']"
+decision-tree,0.7,"['Hist_int', 'KL', 'CPL']"
+decision-tree,0.69,"['CS', 'KL']"
+random-forest,0.68,['CPL']
+decision-tree,0.68,['CPL']
+decision-tree,0.68,"['Hist_int', 'CS']"
+decision-tree,0.68,"['KL', 'CPL']"
+random-forest,0.67,['CS']
+decision-tree,0.67,['CS']
+decision-tree,0.67,"['Hist_int', 'KL']"
+decision-tree,0.66,"['Hist_int', 'CS', 'KL']"
