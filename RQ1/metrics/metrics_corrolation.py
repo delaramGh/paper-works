@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
 
 df = pd.read_csv(csv_file)
 
@@ -45,10 +45,13 @@ hist_cor = hist_cor/max(hist_cor)
 hist_int = df["Hist_intersection"]
 hist_int = hist_int/max(hist_int)
 
+vif = df["VIF"]
+vif = vif/max(vif)
+
 labels = df["label"]
 labels = [int(i) for i in labels]
 
-metrics = [psnr, cpl, cs, ssim, mse, wd, kl, sss, tsi, hist_cor, hist_int, vae]
+metrics = [psnr, cpl, cs, ssim, mse, wd, kl, sss, tsi, hist_cor, hist_int, vae, vif]
 
 matrix = np.zeros((len(metrics)))
 for i in range(len(metrics)):

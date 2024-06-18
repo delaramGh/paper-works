@@ -33,7 +33,8 @@ config_12 = ["CS"]
 config_13 = ["KL"]
 config_14 = ["CPL"]
 
-configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
+# configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
+configs = [config_31, config_32, config_33, config_34, config_4]
 model_names = ["logistic-regression", "SVM", "random-forest", "decision-tree"] 
 models = [LogisticRegression(), make_pipeline(StandardScaler(), SVC(gamma='auto')), RandomForestClassifier(n_estimators=200, random_state=0), tree.DecisionTreeClassifier()]#, KMeans(n_clusters=2, n_init=5)]
 
