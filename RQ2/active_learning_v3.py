@@ -133,15 +133,20 @@ class Active_Learning():
 
         human_effort = (100*manual/all)
         acc = 100*ok/all
+        tp = np.sum(true_label&active_learning)
+        precision = tp / np.sum(active_learning)
+        recall = tp / np.sum(true_label)
 
         print("***    REPORT    ***")
         print("+ number of automatically labeled data: ", all - manual, " out of ", all)
         print("+ human effort is: ", str(human_effort)[:4])
         print("+ final accuracy is: ", str(acc)[:4])
+        print("+ final precision is: ", str(precision)[:4])
+        print("+ final recall is: ", str(recall)[:4])
         print("+ number of missed data: ", all-ok, "(", str(100*(all-ok)/all)[:4], "%)")
         print("\n")
         
-        return human_effort, acc
+        return human_effort, acc, precision, recall
 
 
 ###############################################################
@@ -159,9 +164,9 @@ def active_labeling(csv_name, model_, inputs, threshold, split1=0.2, split2=0.05
         print("\n")
     for i in range(500):
         if labeled_samples == number_of_samples:
-            human_effort, acc = module.report(y_train.shape[0])
+            human_effort, acc, precision, recall = module.report(y_train.shape[0])
             param = [model_, threshold, split1, split2]
-            return human_effort, acc, param
+            return human_effort, acc, precision, recall, param
         
         if print_:
             print("* MAIN LOOP - ", i, "th iteration - ", str(100*labeled_samples/number_of_samples)[:2], "% progress")

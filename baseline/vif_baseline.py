@@ -6,11 +6,11 @@ from tqdm import tqdm
 
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\configuration_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
 df = pd.read_csv(csv_file) 
 
 
-if 1: #VIF calculation
+if 0: #VIF calculation
     vif = []
     for i in tqdm(range(df.shape[0])):
         vif.append(vifp(cv2.imread(df["original"][i]), cv2.imread(df["gen"][i])))
@@ -27,12 +27,12 @@ if 0: #plot
     plt.plot(ok_imgs, "g*", lost_imgs, "r*")
     plt.title("cifar test-dataset VIF Compared to Human Label")
     plt.xlabel("Image Index")
-    plt.ylabel("PSNR")
+    plt.ylabel("VIF")
     plt.legend(["Ok", "Lost"])
     plt.show()
 
 
-if 0: #treshold
+if 1: #treshold
     from sklearn import svm
     import numpy as np
     X = np.expand_dims(np.array(df["VIF"]), axis=1)
@@ -42,3 +42,6 @@ if 0: #treshold
 
     pred = clf.predict(X)
     print("Accuracy: ", 100*np.sum(pred==y)/len(y))
+    tp = np.sum(pred & y)
+    print("Precision: ", 100*tp/np.sum(pred))
+    print("Recall: ", 100*tp/np.sum(y))

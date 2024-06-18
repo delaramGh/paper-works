@@ -34,12 +34,16 @@ def create_x_y_v2(csv_name, metric_list):
 def fit_and_acc(model, model_name, x_train, y_train, x_test, y_test):
     model.fit(x_train, y_train)
 
-    correct = sum(model.predict(x_test) == y_test)
+    pred = model.predict(x_test)
+    correct = np.sum(pred == y_test)
     acc = 1-(y_test.shape[0]-correct)/y_test.shape[0]
+    tp = np.sum(pred & y_test)
+    precision = tp/np.sum(pred)
+    recall = tp/np.sum(y_test)
     if acc < 0.5:
         acc = 1 - acc
     print(model_name, " Accuracy is: ", acc)
-    return model, acc
+    return model, acc, precision, recall
 
 ######################################################################################
 

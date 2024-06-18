@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 
 df = pd.read_csv(csv_file)
 
