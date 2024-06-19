@@ -133,9 +133,12 @@ class Active_Learning():
 
         human_effort = (100*manual/all)
         acc = 100*ok/all
-        tp = np.sum(true_label&active_learning)
-        precision = tp / np.sum(active_learning)
-        recall = tp / np.sum(true_label)
+        tp = 0
+        for i in range(len(active_learning)):
+            if active_learning[i] == 1 and true_label[i] == 1:
+                tp += 1
+        precision = 100*tp / np.sum(active_learning)
+        recall = 100*tp / np.sum(true_label)
 
         print("***    REPORT    ***")
         print("+ number of automatically labeled data: ", all - manual, " out of ", all)
