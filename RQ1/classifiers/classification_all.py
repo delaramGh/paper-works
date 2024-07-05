@@ -42,7 +42,9 @@ def fit_and_acc(model, model_name, x_train, y_train, x_test, y_test):
     recall = tp/np.sum(y_test)
     if acc < 0.5:
         acc = 1 - acc
-    print(model_name, " Accuracy is: ", acc)
+    print(model_name, "Accuracy is: ", acc)
+    print("Precision is: ", precision)
+    print("Recall is: ", recall)
     return model, acc, precision, recall
 
 ######################################################################################

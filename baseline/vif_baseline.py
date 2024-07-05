@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
 df = pd.read_csv(csv_file) 
 
 
@@ -18,7 +18,7 @@ if 0: #VIF calculation
     df.to_csv(csv_file)
 
 
-if 0: #plot
+if 1: #plot
     human_labels = df["label"]
     human_labels = pd.Series(human_labels)
     ok_imgs = df["VIF"][human_labels == 1]

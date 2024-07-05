@@ -1,2 +1,4 @@
 cifar\ dataset/cifar_gen_dataset/
 cifar\ dataset/cifar_org_dataset/
+cifar\ dataset/old/cifar_gen_dataset_old/
+cifar\ dataset/old/cifar_org_dataset_old

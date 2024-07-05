@@ -34,15 +34,15 @@ config_13 = ["KL"]
 config_14 = ["CPL"]
 
 # configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
-configs = [config_32]
-model_names = ["random-forest"]
-models = [RandomForestClassifier(n_estimators=200, random_state=0)]
+configs = [config_13]
+model_names = ["decision-tree"]
+models = [tree.DecisionTreeClassifier()]
 # model_names = ["logistic-regression", "SVM", "random-forest", "decision-tree"] 
 # models = [LogisticRegression(), make_pipeline(StandardScaler(), SVC(gamma='auto')), RandomForestClassifier(n_estimators=200, random_state=0), tree.DecisionTreeClassifier()]#, KMeans(n_clusters=2, n_init=5)]
 
 result = []
 for j in range(len(configs)):
-    csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+    csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\configuration_dataset.csv"
     X, Y = create_x_y_v2(csv_file, configs[j])
     n = int(0.75*X.shape[0])
     x_train = X[:n]
@@ -55,9 +55,9 @@ for j in range(len(configs)):
         print("\n")
 
 
-import csv
-with open('exp1_D2test_configuration.csv', 'w') as f:
-    write = csv.writer(f)
-    write.writerow(["model", "accuracy", "precision", "recall", "config"])
-    write.writerows(result)
+# import csv
+# with open('exp1_D2test_configuration.csv', 'w') as f:
+#     write = csv.writer(f)
+#     write.writerow(["model", "accuracy", "precision", "recall", "config"])
+#     write.writerows(result)
 
