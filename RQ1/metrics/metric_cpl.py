@@ -8,7 +8,8 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 from tensorflow.keras.losses import mean_squared_error as mse
 
 ##  Data...
-df = pd.read_csv("ref_csv_snow.csv")
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+df = pd.read_csv(csv_file)
 img_shape = (512, 320)  #  (224, 224)
 dataset_length = len(df)
 
@@ -18,7 +19,7 @@ for i in tqdm(range(dataset_length)):
     img_org_ = cv2.resize(cv2.imread(df["original"][i]), img_shape).astype(float)
     img_org.append(img_org_)
     #**************CHANGE**************
-    img_gen_ = cv2.resize(cv2.imread(df["light_snow"][i]), img_shape).astype(float)
+    img_gen_ = cv2.resize(cv2.imread(df["gen"][i]), img_shape).astype(float)
     img_gen.append(img_gen_)
     
 img_org = np.array(img_org)
@@ -40,11 +41,9 @@ X_gen = X_gen.reshape(len(X_gen), -1)
 
 losses = np.array(mse(X_org, X_gen))
 
-#back-up
-df.to_csv("ref_csv_BACKUP.csv")
-#**************CHANGE**************
-df["LS_CPL"] = losses
-print(df["LS_CPL"])
-df.to_csv("ref_csv_snow.csv")
+
+df["CPL"] = losses
+print(df["CPL"])
+df.to_csv(csv_file)
 
 

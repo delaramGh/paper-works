@@ -38,13 +38,22 @@ def fit_and_acc(model, model_name, x_train, y_train, x_test, y_test):
     correct = np.sum(pred == y_test)
     acc = 1-(y_test.shape[0]-correct)/y_test.shape[0]
     tp = np.sum(pred & y_test)
-    precision = tp/np.sum(pred)
-    recall = tp/np.sum(y_test)
+
+    if np.sum(pred) == 0:
+        precision = -1
+    else:
+        precision = tp/np.sum(pred)
+
+    if np.sum(y_test) == 0:
+        recall = -1
+    else:
+        recall = tp/np.sum(y_test)
+        
     if acc < 0.5:
         acc = 1 - acc
-    print(model_name, "Accuracy is: ", acc)
-    print("Precision is: ", precision)
-    print("Recall is: ", recall)
+    print(model_name, "Accuracy is: ", str(acc)[:7])
+    print("Precision is: ", str(precision)[:7])
+    print("Recall is: ", str(recall)[:7])
     return model, acc, precision, recall
 
 ######################################################################################

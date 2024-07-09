@@ -1,3 +1,0 @@
-model,accuracy,precision,recall,config
-,,,,
-random-forest,0.79,0.5,0.380952381,"['Hist_int', 'KL', 'CPL']"

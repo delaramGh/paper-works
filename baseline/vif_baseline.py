@@ -6,11 +6,11 @@ from tqdm import tqdm
 
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 df = pd.read_csv(csv_file) 
 
 
-if 0: #VIF calculation
+if 1: #VIF calculation
     vif = []
     for i in tqdm(range(df.shape[0])):
         vif.append(vifp(cv2.imread(df["original"][i]), cv2.imread(df["gen"][i])))
@@ -18,7 +18,7 @@ if 0: #VIF calculation
     df.to_csv(csv_file)
 
 
-if 1: #plot
+if 0: #plot
     human_labels = df["label"]
     human_labels = pd.Series(human_labels)
     ok_imgs = df["VIF"][human_labels == 1]
@@ -32,7 +32,7 @@ if 1: #plot
     plt.show()
 
 
-if 1: #treshold
+if 0: #treshold
     from sklearn import svm
     import numpy as np
     X = np.expand_dims(np.array(df["VIF"]), axis=1)

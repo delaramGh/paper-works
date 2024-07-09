@@ -1,0 +1,61 @@
+model,accuracy,precision,recall,config
+decision-tree,0.890625,0.666666667,0.444444444,"['CS', 'SSIM', 'CPL']"
+random-forest,0.859375,0.5,0.111111111,"['VAE', 'CS']"
+decision-tree,0.859375,0.5,0.222222222,"['VAE', 'CS']"
+SVM,0.859375,0.5,0.111111111,"['CS', 'CPL']"
+decision-tree,0.859375,0.5,0.333333333,"['SSIM', 'CPL']"
+decision-tree,0.859375,0.5,0.222222222,"['VAE', 'CS', 'SSIM']"
+random-forest,0.84375,0.4,0.222222222,"['CS', 'CPL']"
+decision-tree,0.84375,0.4,0.222222222,"['VAE', 'CS', 'SSIM', 'CPL']"
+decision-tree,0.828125,0.375,0.333333333,"['VAE', 'SSIM', 'CPL']"
+decision-tree,0.84375,0.333333333,0.111111111,"['VAE', 'SSIM']"
+random-forest,0.84375,0.333333333,0.111111111,"['VAE', 'CPL']"
+decision-tree,0.8125,0.333333333,0.333333333,"['CS', 'CPL']"
+random-forest,0.84375,0.333333333,0.111111111,"['VAE', 'CS', 'CPL']"
+random-forest,0.84375,0.333333333,0.111111111,"['VAE', 'CS', 'SSIM']"
+random-forest,0.8125,0.285714286,0.222222222,['VAE']
+decision-tree,0.8125,0.285714286,0.222222222,['VAE']
+decision-tree,0.75,0.230769231,0.333333333,"['VAE', 'CS', 'CPL']"
+random-forest,0.78125,0.222222222,0.222222222,['SSIM']
+decision-tree,0.78125,0.222222222,0.222222222,['SSIM']
+decision-tree,0.8125,0.2,0.111111111,"['VAE', 'CPL']"
+random-forest,0.75,0.111111111,0.111111111,['CPL']
+decision-tree,0.75,0.111111111,0.111111111,['CPL']
+decision-tree,0.75,0.111111111,0.111111111,"['CS', 'SSIM']"
+random-forest,0.71875,0.090909091,0.111111111,['CS']
+decision-tree,0.71875,0.090909091,0.111111111,['CS']
+random-forest,0.8125,0,0,"['VAE', 'SSIM']"
+random-forest,0.8125,0,0,"['CS', 'SSIM']"
+random-forest,0.84375,0,0,"['SSIM', 'CPL']"
+logistic-regression,0.84375,0,0,"['CS', 'SSIM', 'CPL']"
+random-forest,0.828125,0,0,"['CS', 'SSIM', 'CPL']"
+random-forest,0.84375,0,0,"['VAE', 'SSIM', 'CPL']"
+logistic-regression,0.84375,0,0,"['VAE', 'CS', 'SSIM', 'CPL']"
+random-forest,0.84375,0,0,"['VAE', 'CS', 'SSIM', 'CPL']"
+logistic-regression,0.859375,-1,0,['VAE']
+SVM,0.859375,-1,0,['VAE']
+logistic-regression,0.859375,-1,0,['CS']
+SVM,0.859375,-1,0,['CS']
+logistic-regression,0.859375,-1,0,['SSIM']
+SVM,0.859375,-1,0,['SSIM']
+logistic-regression,0.859375,-1,0,['CPL']
+SVM,0.859375,-1,0,['CPL']
+logistic-regression,0.859375,-1,0,"['VAE', 'CS']"
+SVM,0.859375,-1,0,"['VAE', 'CS']"
+logistic-regression,0.859375,-1,0,"['VAE', 'SSIM']"
+SVM,0.859375,-1,0,"['VAE', 'SSIM']"
+logistic-regression,0.859375,-1,0,"['VAE', 'CPL']"
+SVM,0.859375,-1,0,"['VAE', 'CPL']"
+logistic-regression,0.859375,-1,0,"['CS', 'SSIM']"
+SVM,0.859375,-1,0,"['CS', 'SSIM']"
+logistic-regression,0.859375,-1,0,"['CS', 'CPL']"
+logistic-regression,0.859375,-1,0,"['SSIM', 'CPL']"
+SVM,0.859375,-1,0,"['SSIM', 'CPL']"
+SVM,0.859375,-1,0,"['CS', 'SSIM', 'CPL']"
+logistic-regression,0.859375,-1,0,"['VAE', 'SSIM', 'CPL']"
+SVM,0.859375,-1,0,"['VAE', 'SSIM', 'CPL']"
+logistic-regression,0.859375,-1,0,"['VAE', 'CS', 'CPL']"
+SVM,0.859375,-1,0,"['VAE', 'CS', 'CPL']"
+logistic-regression,0.859375,-1,0,"['VAE', 'CS', 'SSIM']"
+SVM,0.859375,-1,0,"['VAE', 'CS', 'SSIM']"
+SVM,0.859375,-1,0,"['VAE', 'CS', 'SSIM', 'CPL']"

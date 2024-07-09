@@ -5,19 +5,21 @@ import pandas as pd
 from tqdm import tqdm
 
 
-df = pd.read_csv("ref_csv_snow.csv")
+
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+df = pd.read_csv(csv_file)
 dataset_length = df.shape[0]
 
 ssim = []
 for i in tqdm(range(dataset_length)):
     img_org = img_as_float(cv2.imread(df["original"][i], cv2.IMREAD_GRAYSCALE))
     #**************CHANGE**************
-    img_gen = img_as_float(cv2.imread(df["moderate_snow"][i], cv2.IMREAD_GRAYSCALE))
+    img_gen = img_as_float(cv2.imread(df["gen"][i], cv2.IMREAD_GRAYSCALE))
     ssim.append(structural_similarity (img_org, img_gen, data_range=img_gen.max()-img_gen.min()))
 
 #**************CHANGE**************
-df["MS_SSIM"] = ssim
-print(df["MS_SSIM"])
-df.to_csv("ref_csv_snow.csv")
+df["SSIM"] = ssim
+print(df["SSIM"])
+df.to_csv(csv_file)
 
 

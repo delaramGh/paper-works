@@ -8,7 +8,8 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 from sklearn.metrics.pairwise import cosine_similarity
 
 ##  Data...
-df = pd.read_csv("ref_csv_snow.csv")
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+df = pd.read_csv(csv_file)
 img_shape = (512, 320)  #  (224, 224)
 dataset_length = len(df)
 
@@ -17,8 +18,7 @@ img_org, img_gen = [], []
 for i in tqdm(range(dataset_length)):
     img_org_ = cv2.resize(cv2.imread(df["original"][i]), img_shape).astype(float)
     img_org.append(img_org_)
-    #**************CHANGE**************
-    img_gen_ = cv2.resize(cv2.imread(df["high_snow"][i]), img_shape).astype(float)
+    img_gen_ = cv2.resize(cv2.imread(df["gen"][i]), img_shape).astype(float)
     img_gen.append(img_gen_)
     
 img_org = np.array(img_org)
@@ -39,11 +39,9 @@ X_gen = X_gen.reshape(len(X_gen), -1)
 cs = cosine_similarity(X_org, X_gen)
 cs = [cs[i, i] for i in range(len(cs))]
 
-#back-up
-df.to_csv("ref_csv_BACKUP.csv")
-#**************CHANGE**************
-df["HS_CS"] = cs
-print(df["HS_CS"])
-df.to_csv("ref_csv_snow.csv")
+
+df["CS"] = cs
+print(df["CS"])
+df.to_csv(csv_file)
 
 

@@ -33,32 +33,41 @@ config_12 = ["CS"]
 config_13 = ["SSIM"]
 config_14 = ["CPL"]
 
+
 # configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
-configs = [config_21]
 # model_names = ["logistic-regression", "SVM", "random-forest", "decision-tree"] 
-model_names = ["svm"]
 # models = [LogisticRegression(), make_pipeline(StandardScaler(), SVC(gamma='auto')), RandomForestClassifier(n_estimators=200, random_state=0), tree.DecisionTreeClassifier()]#, KMeans(n_clusters=2, n_init=5)]
+
+
+configs = [["PSNR", "CS", "CPL"]]
+model_names = ["SVM"]
 models = [make_pipeline(StandardScaler(), SVC(gamma='auto'))]
 
 
 
 result = []
 for j in range(len(configs)):
-    csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\configuration_dataset.csv"
+    csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
     X, Y = create_x_y_v2(csv_file, configs[j])
-    n = int(0.75*X.shape[0])
+
+    effort = 0.75
+
+    n = int(effort*X.shape[0])
     x_train = X[:n]
     x_test  = X[n:]
     y_train = Y[:n]
     y_test  = Y[n:]
     for i in range(len(models)):
+        print("\n")
         _, acc, precision, recall = fit_and_acc(models[i], model_names[i], x_train, y_train, x_test, y_test)
         result.append([model_names[i], acc, precision, recall, configs[j]])
+        print("input parameters: ", configs[j])
+        print("human effort: ", effort)
         print("\n")
 
 
 # import csv
-# with open('exp1_D1_configuration.csv', 'w') as f:
+# with open('exp1_D1_configuration_0_25.csv', 'w') as f:
 #     write = csv.writer(f)
 #     write.writerow(["model", "accuracy", "precision", "recall", "config"])
 #     write.writerows(result)

@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 
 df = pd.read_csv(csv_file)
 
@@ -39,10 +39,10 @@ tsi = tsi/max(tsi)
 vae = df["VAE"]
 vae = vae/max(vae)
 
-hist_cor = df["Hist_correlation"]
+hist_cor = df["Hist_cor"]
 hist_cor = hist_cor/max(hist_cor)
 
-hist_int = df["Hist_intersection"]
+hist_int = df["Hist_int"]
 hist_int = hist_int/max(hist_int)
 
 vif = df["VIF"]
@@ -51,19 +51,19 @@ vif = vif/max(vif)
 labels = df["label"]
 labels = [int(i) for i in labels]
 
-# metrics = [psnr, cpl, cs, ssim, mse, wd, kl, sss, tsi, hist_cor, hist_int, vae, vif]
-metrics = [psnr, cpl, cs, ssim, vif]
+metrics = [psnr, cpl, cs, ssim, mse, wd, kl, sss, tsi, hist_cor, hist_int, vae, vif]
+# metrics = [psnr, cpl, cs, ssim, vif]
 
 matrix = np.zeros((len(metrics)))
 for i in range(len(metrics)):
         matrix[i] = np.corrcoef(metrics[i], labels)[1, 0]
 df2 = pd.DataFrame(matrix)
 print(df2)
-# df2.to_csv("exp1_D2_corrolation_label.csv")
+df2.to_csv("exp1_D2_corrolation_label.csv")
 
 
 matrix3 = np.corrcoef(metrics)
 
 df3 = pd.DataFrame(matrix3)
-df3.to_csv("exp1_D2_corrolation_5metrics.csv")
+df3.to_csv("exp1_D2_corrolation_metrics.csv")
 

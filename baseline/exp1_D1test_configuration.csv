@@ -1,2 +1,0 @@
-model,accuracy,precision,recall,config
-random-forest,0.9039301310043668,0.908675799086758,0.9386792452830188,"['PSNR', 'CS', 'CPL']"
