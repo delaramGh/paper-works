@@ -4,31 +4,31 @@ from tqdm import tqdm
 
 
 
-inputs = [["VAE", "CS", "SSIM", "CPL"], 
-          ["CS", "CPL"], 
-          ["VAE", "CS", "SSIM", "CPL"],
-          ["VAE", "CS", "SSIM", "CPL"]] #cifar
+# inputs = [["VAE", "CS", "SSIM", "CPL"], 
+#           ["CS", "CPL"], 
+#           ["VAE", "CS", "SSIM", "CPL"],
+#           ["VAE", "CS", "SSIM", "CPL"]] #cifar
 
 # inputs = [["PSNR", "CS", "CPL", "SSIM"], 
 #           ["PSNR", "CS", "CPL"], 
 #           ["PSNR", "CS", "CPL", "SSIM"],
 #           ["PSNR", "CS", "CPL", "SSIM"]] #smartInside
 
-models = ["Decision Tree", "SVM", "Logistic Regression", "Random Forest"]
-thresholds = [0.8, 0.85, 0.9, 0.95, 0.99]
-split1 = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
-split2 = [0.01, 0.03, 0.05, 0.08, 0.1, 0.15]
+# models = ["Decision Tree", "SVM", "Logistic Regression", "Random Forest"]
+# thresholds = [0.8, 0.85, 0.9, 0.95, 0.99]
+# split1 = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
+# split2 = [0.01, 0.03, 0.05, 0.08, 0.1, 0.15]
 
 
 
-# inputs = [["Hist_int", "KL", "CPL"]]
-# models = ["Random Forest"]
-# thresholds = [0.95]
-# split1 = [0.1]
-# split2 = [0.05]
+inputs = [["PSNR", "CS", "CPL"]]
+models = ["SVM"]
+thresholds = [0.85]
+split1 = [0.1]
+split2 = [0.1]
 
 
-dataset = "..\\cifar dataset\\test_dataset.csv"
+dataset = "..\\smartInside dataset\\test_dataset.csv"
 
 for model_number in range(len(models)):
     he = []

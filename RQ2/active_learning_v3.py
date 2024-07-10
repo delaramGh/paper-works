@@ -142,11 +142,11 @@ class Active_Learning():
 
         print("***    REPORT    ***")
         print("+ number of automatically labeled data: ", all - manual, " out of ", all)
-        print("+ human effort is: ", str(human_effort)[:4])
-        print("+ final accuracy is: ", str(acc)[:4])
-        print("+ final precision is: ", str(precision)[:4])
-        print("+ final recall is: ", str(recall)[:4])
-        print("+ number of missed data: ", all-ok, "(", str(100*(all-ok)/all)[:4], "%)")
+        print("+ human effort is: ", str(human_effort)[:6])
+        print("+ final accuracy is: ", str(acc)[:6])
+        print("+ final precision is: ", str(precision)[:6])
+        print("+ final recall is: ", str(recall)[:6])
+        print("+ number of missed data: ", all-ok, "(", str(100*(all-ok)/all)[:6], "%)")
         print("\n")
         
         return human_effort, acc, precision, recall
