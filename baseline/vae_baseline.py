@@ -1,10 +1,11 @@
+from sklearn import svm
+import numpy as np
 from sewar.full_ref import vifp
 import cv2
 import pandas as pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from sklearn.utils import shuffle
-import numpy as np
 
 
 def shuffle_dataset(dataset):
@@ -14,49 +15,38 @@ def shuffle_dataset(dataset):
 
 
 csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
-df = pd.read_csv(csv_file) 
 
 
-if 0: #VIF calculation
-    vif = []
-    for i in tqdm(range(df.shape[0])):
-        vif.append(vifp(cv2.imread(df["original"][i]), cv2.imread(df["gen"][i])))
-    df["VIF"] = vif
-    df.to_csv(csv_file)
-
-
-if 0: #plot
+if 0:  #plot
+    df = pd.read_csv(csv_file)
     human_labels = df["label"]
     human_labels = pd.Series(human_labels)
-    ok_imgs = df["VIF"][human_labels == 1]
-    lost_imgs = df["VIF"][human_labels == 0]
+    ok_imgs = df["VAE"][human_labels == 1]
+    lost_imgs = df["VAE"][human_labels == 0]
 
-    plt.plot(ok_imgs, "g*", lost_imgs, "r*")
-    plt.title("cifar test-dataset VIF Compared to Human Label")
+    plt.plot(ok_imgs, "g*", lost_imgs, "r.")
+    plt.title("cifar test-dataset VAE Compared to Human Label")
     plt.xlabel("Image Index")
-    plt.ylabel("VIF")
+    plt.ylabel("VAE")
     plt.legend(["Ok", "Lost"])
     plt.show()
 
 
-if 0: #treshold
-    from sklearn import svm
-    import numpy as np
-
-
+if 0: #ُSVM Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
     recall_list = []
-    for effort in [0.25, 0.5, 0.75]:
-        for _ in range(20):
+    for effort in [1]:
+        for _ in tqdm(range(50)):
             shuffle_dataset(csv_file)
             df = pd.read_csv(csv_file) 
 
-            X = np.expand_dims(np.array(df["VIF"]), axis=1)
+            X = np.expand_dims(np.array(df["VAE"]), axis=1)
             y = np.array(df["label"])
-            clf = svm.SVC(kernel="linear")
-
+            
+            # clf = svm.SVC(kernel="linear", class_weight='balanced')
+            clf = svm.LinearSVC(class_weight='balanced', C=1000, penalty='l1', loss='hinge')
             clf.fit(X[:int(effort*len(y))], y[:int(effort*len(y))])
 
             pred = clf.predict(X)
@@ -73,13 +63,15 @@ if 0: #treshold
             acc_list.append(acc)
             precision_list.append(precision)
             recall_list.append(recall)
-    
+            print('-'*50)
+            print('َAccuracy:', acc)
+            print('Precision:', precision)
+            print('Recall:', recall)
+
     df = pd.DataFrame({"accuracy":acc_list, "precision":precision_list, 
-                       "recall":recall_list, "human effort":human_effort_list})
+                        "recall":recall_list, "human effort":human_effort_list})
 
-    df.to_csv(f"D2_baseline_VIF.csv")
-            
-
+    df.to_csv(f"D2_baseline_VAE.csv")
 
 
 def find_best_th(th_list, x, y):
@@ -98,14 +90,14 @@ if 1: #dasti Threshold
     recall_list = []
     threshold_list = []
     for effort in [0.25, 0.5, 0.75]:
-        for _ in range(20):
+        for _ in tqdm(range(20)):
             shuffle_dataset(csv_file)
             df = pd.read_csv(csv_file) 
 
-            n = int(effort*len(df["VIF"]))
-            x_train = np.array(df["VIF"])[:n]
+            n = int(effort*len(df["VAE"]))
+            x_train = np.array(df["VAE"])[:n]
             y_train = np.array(df["label"])[:n]
-            x_test = np.array(df["VIF"])[n:]
+            x_test = np.array(df["VAE"])[n:]
             y_test = np.array(df["label"])[n:]
 
             th_list = np.linspace(x_train.min(), x_train.max(), num=100)
@@ -113,6 +105,11 @@ if 1: #dasti Threshold
 
             pred = np.array(x_test > th) 
             acc = 100*np.sum(pred==y_test)/len(y_test)
+
+            # tp = 0
+            # for i in range(len(pred)):
+            #     if pred[i] == 1 and y_test[i] == 1:
+            #         tp += 1
             tp = np.sum(pred & y_test)
 
             if np.sum(pred) != 0:
@@ -131,5 +128,5 @@ if 1: #dasti Threshold
                         "recall":recall_list, "human effort":human_effort_list,
                         "threshold": threshold_list})
 
-    df.to_csv(f"D1_baseline_VIF.csv")
+    df.to_csv(f"D2_baseline_VAE.csv")
         

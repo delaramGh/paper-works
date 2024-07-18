@@ -11,7 +11,7 @@ from tqdm import tqdm
 from sklearn.utils import shuffle
 import pickle
 
-from classification_all import create_x_y_v2, fit_and_acc
+from classification_module import create_x_y_v2, fit_and_acc
 
 
 config_4 = ["VAE", "CS", "SSIM", "CPL"]
