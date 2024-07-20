@@ -14,10 +14,10 @@ def shuffle_dataset(dataset):
     df.to_csv(dataset, index=False)
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
 
 
-if 0:  #plot
+if 1:  #plot
     df = pd.read_csv(csv_file)
     human_labels = df["label"]
     human_labels = pd.Series(human_labels)
@@ -25,7 +25,7 @@ if 0:  #plot
     lost_imgs = df["VAE"][human_labels == 0]
 
     plt.plot(ok_imgs, "g*", lost_imgs, "r.")
-    plt.title("cifar test-dataset VAE Compared to Human Label")
+    plt.title("smartInside test-dataset VAE Compared to Human Label")
     plt.xlabel("Image Index")
     plt.ylabel("VAE")
     plt.legend(["Ok", "Lost"])
@@ -83,7 +83,7 @@ def find_best_th(th_list, x, y):
     return th_list[accs.argmax()]
 
 
-if 1: #dasti Threshold
+if 0: #dasti Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
@@ -128,5 +128,5 @@ if 1: #dasti Threshold
                         "recall":recall_list, "human effort":human_effort_list,
                         "threshold": threshold_list})
 
-    df.to_csv(f"D2_baseline_VAE.csv")
+    df.to_csv(f"D1_baseline_VAE.csv")
         

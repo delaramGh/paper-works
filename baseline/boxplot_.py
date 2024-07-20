@@ -21,10 +21,10 @@ import matplotlib.pyplot as plt
 
 # Load the data from the provided files
 file_paths = [
-    'results\D2_baseline_exp1.csv',
-    'results\D2_baseline_exp2.csv',
-    'results\D2_baseline_VIF.csv',
-    'results\D2_baseline_VAE.csv'
+    'results\D1_baseline_exp1.csv',
+    'results\D1_baseline_exp2.csv',
+    'results\D1_baseline_VIF.csv',
+    'results\D1_baseline_VAE.csv'
 ]
 
 # Reading the CSV files into dataframes
@@ -32,7 +32,7 @@ dfs = [pd.read_csv(file_path) for file_path in file_paths]
 
 
 # Extracting the necessary columns from each dataframe
-parameter = 'F1-Score'
+parameter = 'accuracy'
 df1 = dfs[0][['effort', parameter]]
 df2 = dfs[1][['effort', parameter]]
 df3 = dfs[2][['effort', parameter]]
