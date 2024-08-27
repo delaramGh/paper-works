@@ -1,61 +1,61 @@
-model,accuracy,precision,recall,config
-random-forest,0.859375,0.5,0.166666667,"['VAE', 'CS']"
-random-forest,0.8515625,0.444444444,0.222222222,"['CS', 'SSIM', 'CPL']"
-decision-tree,0.8359375,0.411764706,0.388888889,"['CS', 'SSIM', 'CPL']"
-decision-tree,0.8359375,0.411764706,0.388888889,"['VAE', 'CS', 'SSIM', 'CPL']"
-logistic-regression,0.8515625,0.4,0.111111111,"['CS', 'SSIM', 'CPL']"
-logistic-regression,0.8515625,0.4,0.111111111,"['VAE', 'CS', 'SSIM', 'CPL']"
-random-forest,0.8359375,0.384615385,0.277777778,['VAE']
-decision-tree,0.8359375,0.384615385,0.277777778,['VAE']
-logistic-regression,0.8515625,0.333333333,0.055555556,['CPL']
-logistic-regression,0.8515625,0.333333333,0.055555556,"['VAE', 'CPL']"
-decision-tree,0.828125,0.333333333,0.222222222,"['CS', 'SSIM']"
-logistic-regression,0.8515625,0.333333333,0.055555556,"['CS', 'CPL']"
-SVM,0.8515625,0.333333333,0.055555556,"['CS', 'CPL']"
-random-forest,0.8359375,0.333333333,0.166666667,"['CS', 'CPL']"
-logistic-regression,0.8515625,0.333333333,0.055555556,"['VAE', 'CS', 'CPL']"
-random-forest,0.8359375,0.285714286,0.111111111,"['VAE', 'CS', 'CPL']"
-random-forest,0.8203125,0.272727273,0.166666667,"['VAE', 'CPL']"
-logistic-regression,0.84375,0.25,0.055555556,"['SSIM', 'CPL']"
-logistic-regression,0.84375,0.25,0.055555556,"['VAE', 'SSIM', 'CPL']"
-random-forest,0.828125,0.25,0.111111111,"['VAE', 'CS', 'SSIM', 'CPL']"
-decision-tree,0.7890625,0.235294118,0.222222222,"['VAE', 'CPL']"
-decision-tree,0.7890625,0.2,0.166666667,"['VAE', 'CS']"
-random-forest,0.8359375,0.2,0.055555556,"['VAE', 'SSIM']"
-decision-tree,0.7890625,0.2,0.166666667,"['VAE', 'CS', 'SSIM']"
-decision-tree,0.734375,0.192307692,0.277777778,"['VAE', 'SSIM', 'CPL']"
-decision-tree,0.78125,0.1875,0.166666667,"['CS', 'CPL']"
-decision-tree,0.7734375,0.176470588,0.166666667,"['SSIM', 'CPL']"
-decision-tree,0.7734375,0.176470588,0.166666667,"['VAE', 'CS', 'CPL']"
-random-forest,0.7421875,0.173913043,0.222222222,['SSIM']
-decision-tree,0.7421875,0.173913043,0.222222222,['SSIM']
-random-forest,0.765625,0.166666667,0.166666667,['CS']
-decision-tree,0.765625,0.166666667,0.166666667,['CS']
-random-forest,0.828125,0.166666667,0.055555556,"['CS', 'SSIM']"
-decision-tree,0.7578125,0.157894737,0.166666667,"['VAE', 'SSIM']"
-random-forest,0.7890625,0.090909091,0.055555556,"['SSIM', 'CPL']"
-random-forest,0.7578125,0.066666667,0.055555556,['CPL']
-decision-tree,0.7578125,0.066666667,0.055555556,['CPL']
-random-forest,0.8046875,0,0,"['VAE', 'SSIM', 'CPL']"
-random-forest,0.8359375,0,0,"['VAE', 'CS', 'SSIM']"
-logistic-regression,0.859375,-1,0,['VAE']
-SVM,0.859375,-1,0,['VAE']
-logistic-regression,0.859375,-1,0,['CS']
-SVM,0.859375,-1,0,['CS']
-logistic-regression,0.859375,-1,0,['SSIM']
-SVM,0.859375,-1,0,['SSIM']
-SVM,0.859375,-1,0,['CPL']
-logistic-regression,0.859375,-1,0,"['VAE', 'CS']"
-SVM,0.859375,-1,0,"['VAE', 'CS']"
-logistic-regression,0.859375,-1,0,"['VAE', 'SSIM']"
-SVM,0.859375,-1,0,"['VAE', 'SSIM']"
-SVM,0.859375,-1,0,"['VAE', 'CPL']"
-logistic-regression,0.859375,-1,0,"['CS', 'SSIM']"
-SVM,0.859375,-1,0,"['CS', 'SSIM']"
-SVM,0.859375,-1,0,"['SSIM', 'CPL']"
-SVM,0.859375,-1,0,"['CS', 'SSIM', 'CPL']"
-SVM,0.859375,-1,0,"['VAE', 'SSIM', 'CPL']"
-SVM,0.859375,-1,0,"['VAE', 'CS', 'CPL']"
-logistic-regression,0.859375,-1,0,"['VAE', 'CS', 'SSIM']"
-SVM,0.859375,-1,0,"['VAE', 'CS', 'SSIM']"
-SVM,0.859375,-1,0,"['VAE', 'CS', 'SSIM', 'CPL']"
+model,accuracy,precision,recall,config,tedad
+random-forest,0.8359375,0.384615385,0.277777778,['VAE'],1
+decision-tree,0.8359375,0.384615385,0.277777778,['VAE'],1
+logistic-regression,0.8515625,0.333333333,0.055555556,['CPL'],1
+random-forest,0.7421875,0.173913043,0.222222222,['SSIM'],1
+decision-tree,0.7421875,0.173913043,0.222222222,['SSIM'],1
+random-forest,0.765625,0.166666667,0.166666667,['CS'],1
+decision-tree,0.765625,0.166666667,0.166666667,['CS'],1
+random-forest,0.7578125,0.066666667,0.055555556,['CPL'],1
+decision-tree,0.7578125,0.066666667,0.055555556,['CPL'],1
+logistic-regression,0.859375,-1,0,['VAE'],1
+SVM,0.859375,-1,0,['VAE'],1
+logistic-regression,0.859375,-1,0,['CS'],1
+SVM,0.859375,-1,0,['CS'],1
+logistic-regression,0.859375,-1,0,['SSIM'],1
+SVM,0.859375,-1,0,['SSIM'],1
+SVM,0.859375,-1,0,['CPL'],1
+random-forest,0.859375,0.5,0.166666667,"['VAE', 'CS']",2
+logistic-regression,0.8515625,0.333333333,0.055555556,"['VAE', 'CPL']",2
+decision-tree,0.828125,0.333333333,0.222222222,"['CS', 'SSIM']",2
+logistic-regression,0.8515625,0.333333333,0.055555556,"['CS', 'CPL']",2
+SVM,0.8515625,0.333333333,0.055555556,"['CS', 'CPL']",2
+random-forest,0.8359375,0.333333333,0.166666667,"['CS', 'CPL']",2
+random-forest,0.8203125,0.272727273,0.166666667,"['VAE', 'CPL']",2
+logistic-regression,0.84375,0.25,0.055555556,"['SSIM', 'CPL']",2
+decision-tree,0.7890625,0.235294118,0.222222222,"['VAE', 'CPL']",2
+decision-tree,0.7890625,0.2,0.166666667,"['VAE', 'CS']",2
+random-forest,0.8359375,0.2,0.055555556,"['VAE', 'SSIM']",2
+decision-tree,0.78125,0.1875,0.166666667,"['CS', 'CPL']",2
+decision-tree,0.7734375,0.176470588,0.166666667,"['SSIM', 'CPL']",2
+random-forest,0.828125,0.166666667,0.055555556,"['CS', 'SSIM']",2
+decision-tree,0.7578125,0.157894737,0.166666667,"['VAE', 'SSIM']",2
+random-forest,0.7890625,0.090909091,0.055555556,"['SSIM', 'CPL']",2
+random-forest,0.8046875,0,0,"['VAE', 'SSIM', 'CPL']",2
+random-forest,0.8359375,0,0,"['VAE', 'CS', 'SSIM']",2
+logistic-regression,0.859375,-1,0,"['VAE', 'CS']",2
+SVM,0.859375,-1,0,"['VAE', 'CS']",2
+logistic-regression,0.859375,-1,0,"['VAE', 'SSIM']",2
+SVM,0.859375,-1,0,"['VAE', 'SSIM']",2
+SVM,0.859375,-1,0,"['VAE', 'CPL']",2
+logistic-regression,0.859375,-1,0,"['CS', 'SSIM']",2
+SVM,0.859375,-1,0,"['CS', 'SSIM']",2
+SVM,0.859375,-1,0,"['SSIM', 'CPL']",2
+random-forest,0.8515625,0.444444444,0.222222222,"['CS', 'SSIM', 'CPL']",3
+decision-tree,0.8359375,0.411764706,0.388888889,"['CS', 'SSIM', 'CPL']",3
+logistic-regression,0.8515625,0.4,0.111111111,"['CS', 'SSIM', 'CPL']",3
+logistic-regression,0.8515625,0.333333333,0.055555556,"['VAE', 'CS', 'CPL']",3
+random-forest,0.8359375,0.285714286,0.111111111,"['VAE', 'CS', 'CPL']",3
+logistic-regression,0.84375,0.25,0.055555556,"['VAE', 'SSIM', 'CPL']",3
+decision-tree,0.7890625,0.2,0.166666667,"['VAE', 'CS', 'SSIM']",3
+decision-tree,0.734375,0.192307692,0.277777778,"['VAE', 'SSIM', 'CPL']",3
+decision-tree,0.7734375,0.176470588,0.166666667,"['VAE', 'CS', 'CPL']",3
+SVM,0.859375,-1,0,"['CS', 'SSIM', 'CPL']",3
+SVM,0.859375,-1,0,"['VAE', 'SSIM', 'CPL']",3
+SVM,0.859375,-1,0,"['VAE', 'CS', 'CPL']",3
+logistic-regression,0.859375,-1,0,"['VAE', 'CS', 'SSIM']",3
+SVM,0.859375,-1,0,"['VAE', 'CS', 'SSIM']",3
+decision-tree,0.8359375,0.411764706,0.388888889,"['VAE', 'CS', 'SSIM', 'CPL']",4
+logistic-regression,0.8515625,0.4,0.111111111,"['VAE', 'CS', 'SSIM', 'CPL']",4
+random-forest,0.828125,0.25,0.111111111,"['VAE', 'CS', 'SSIM', 'CPL']",4
+SVM,0.859375,-1,0,"['VAE', 'CS', 'SSIM', 'CPL']",4

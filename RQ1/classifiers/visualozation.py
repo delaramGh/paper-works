@@ -3,7 +3,7 @@ if 1:
     import matplotlib.pyplot as plt
 
     # Load the data from the CSV file
-    file_path = 'EXP1_result.csv'
+    file_path = 'C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\RQ1\\results\\cifar dataset\\exp1_D2_configuration_0_5.csv'
     data = pd.read_csv(file_path)
 
 
@@ -30,7 +30,7 @@ if 1:
     plt.ylabel('Accuracy')
     plt.title('Model Accuracy by Configuration')
     plt.legend(title='Models')
-    plt.xticks(rotation=45)  # Rotate labels if needed
+    plt.xticks(rotation=25, fontsize=7)  # Rotate labels if needed
 
     plt.show()
 
