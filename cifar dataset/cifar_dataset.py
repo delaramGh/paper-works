@@ -41,13 +41,13 @@ from tqdm import tqdm
 ################################################################################
 import shutil 
 
-df = pd.read_csv("test_dataset.csv")
+df = pd.read_csv("correlation_dataset.csv")
 
 for i in range(len(df)):
     index = df["gen"][i].find("cifar_gen_dataset")
     name = df["gen"][i][index+18:]
     # print(name)
-    shutil.copy(df["gen"][i], f"cifar_test_dataset//{name}") 
+    shutil.copy(df["gen"][i], f"cifar_correlation_dataset//{name}") 
 
 
 ################################################################################

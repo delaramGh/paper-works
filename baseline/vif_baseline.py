@@ -13,11 +13,11 @@ def shuffle_dataset(dataset):
     df.to_csv(dataset, index=False)
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
 df = pd.read_csv(csv_file) 
 
 
-if 0: #VIF calculation
+if 1: #VIF calculation
     vif = []
     for i in tqdm(range(df.shape[0])):
         vif.append(vifp(cv2.imread(df["original"][i]), cv2.imread(df["gen"][i])))
@@ -91,7 +91,7 @@ def find_best_th(th_list, x, y):
     return th_list[accs.argmax()]
 
 
-if 1: #dasti Threshold
+if 0: #dasti Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
