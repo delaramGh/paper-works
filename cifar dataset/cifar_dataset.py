@@ -52,7 +52,7 @@ for i in range(len(df)):
 
 ################################################################################
 ################################################################################
-# csv_file = "test_dataset.csv"
+# csv_file = "cifar_dataset_modified.csv"
 # df = pd.read_csv(csv_file)
 
 # org_names = []

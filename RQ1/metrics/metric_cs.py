@@ -8,7 +8,7 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 from sklearn.metrics.pairwise import cosine_similarity
 
 ##  Data...
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\correlation_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_dataset_modified.csv"
 df = pd.read_csv(csv_file)
 img_shape = (32, 32) #(512, 320)  #  (224, 224)
 dataset_length = len(df)
