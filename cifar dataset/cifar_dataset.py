@@ -39,46 +39,46 @@ from tqdm import tqdm
 
 ################################################################################
 ################################################################################
-import shutil 
+# import shutil 
 
-df = pd.read_csv("correlation_dataset.csv")
+# df = pd.read_csv("correlation_dataset.csv")
 
-for i in range(len(df)):
-    index = df["gen"][i].find("cifar_gen_dataset")
-    name = df["gen"][i][index+18:]
-    # print(name)
-    shutil.copy(df["gen"][i], f"cifar_correlation_dataset//{name}") 
+# for i in range(len(df)):
+#     index = df["gen"][i].find("cifar_gen_dataset")
+#     name = df["gen"][i][index+18:]
+#     # print(name)
+#     shutil.copy(df["gen"][i], f"cifar_correlation_dataset//{name}") 
 
 
 ################################################################################
 ################################################################################
-# csv_file = "cifar_dataset_modified.csv"
-# df = pd.read_csv(csv_file)
+csv_file = "cifar_dataset_modified.csv"
+df = pd.read_csv(csv_file)
 
-# org_names = []
-# gen_names = []
-# gen_path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_gen_dataset\\"
-# org_path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_org_dataset\\"
+org_names = []
+gen_names = []
+gen_path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_gen_dataset\\"
+org_path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_org_dataset\\"
 
-# for i in range(df.shape[0]):
-#     i1 = df["original"][i].find("ORIGINAL")
-#     i2 = df["original"][i][i1+9:].find("/")
-#     org_name = df["original"][i][i1+9+i2+1:]
+for i in range(df.shape[0]):
+    i1 = df["original"][i].find("ORIGINAL")
+    i2 = df["original"][i][i1+9:].find("/")
+    org_name = df["original"][i][i1+9+i2+1:]
 
-#     i1 = df["gen"][i].find("TRANSFORMED")
-#     i2 = df["gen"][i][i1+12:].find("/")
-#     gen_name = df["gen"][i][i1+12+i2+1:]
+    i1 = df["gen"][i].find("TRANSFORMED")
+    i2 = df["gen"][i][i1+12:].find("/")
+    gen_name = df["gen"][i][i1+12+i2+1:]
 
-#     org_names.append(org_path + org_name)
-#     gen_names.append(gen_path + gen_name)
+    org_names.append(org_path + org_name)
+    gen_names.append(gen_path + gen_name)
     
 
-# print(len(org_names))
-# print(len(gen_names))
-# df["original"] = org_names
-# df["gen"] = gen_names
+print(len(org_names))
+print(len(gen_names))
+df["original"] = org_names
+df["gen"] = gen_names
 
-# df.to_csv(csv_file)
+df.to_csv(csv_file)
 
 
 
