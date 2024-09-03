@@ -4,10 +4,10 @@ from tqdm import tqdm
 
 
 
-inputs = [["Hist_cor", "SSIM", "CPL"], 
-          ["Hist_cor", "SSIM", "CPL", "VIF"], 
-          ["Hist_cor", "CPL"],
-          ["Hist_cor", "VIF", "SSIM", "CPL"]] #cifar
+inputs = [["Hist_int", "SSIM", "CS", "VIF"], 
+          ["SSIM", "CS", "VIF"], 
+          ["Hist_int", "SSIM"],
+          ["VIF", "SSIM", "CS"]] #cifar
 
 # inputs = [["PSNR", "CS", "CPL", "SSIM"], 
 #           ["PSNR", "CS", "CPL"], 
@@ -21,7 +21,7 @@ split1 = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
 split2 = [0.01, 0.03, 0.05, 0.08, 0.1, 0.15]
 
 
-dataset = "..\\cifar dataset\\cifar_dataset_modified.csv"
+dataset = "..\\cifar dataset\\concep2_cifar_all.csv"
 # dataset = "..\\cifar dataset\\correlation_dataset_old.csv"
 # dataset = "..\\smartInside dataset\\test_dataset.csv"
 
@@ -51,7 +51,7 @@ for model_number in range(len(models)):
                        "split_1":s1_list, "split_2":s2_list, 
                        "accuracy":acc_list, "precision":precision_list, 
                        "recall":recall_list, "human effort":human_effort_list})
-    df.to_csv(f"results\\cifar_dataset\\exp2_D2_concept1_search__{models[model_number]}.csv")
+    df.to_csv(f"results\\cifar_dataset\\exp2_D2_concept2_search__{models[model_number]}.csv")
 
 
 

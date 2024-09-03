@@ -1,0 +1,61 @@
+model,accuracy,precision,recall,config
+SVM,0.731428571,0.727848101,0.966386555,['SSIM']
+SVM,0.731428571,0.727848101,0.966386555,"['SSIM', 'CS']"
+SVM,0.731428571,0.733766234,0.949579832,"['VIF', 'SSIM', 'CS']"
+logistic-regression,0.725714286,0.715151515,0.991596639,['SSIM']
+logistic-regression,0.725714286,0.715151515,0.991596639,"['Hist_int', 'SSIM']"
+SVM,0.725714286,0.72327044,0.966386555,"['Hist_int', 'SSIM', 'CS']"
+SVM,0.72,0.724358974,0.949579832,"['Hist_int', 'SSIM']"
+logistic-regression,0.72,0.716049383,0.974789916,"['VIF', 'SSIM', 'CS']"
+logistic-regression,0.714285714,0.706586826,0.991596639,['Hist_int']
+logistic-regression,0.714285714,0.709090909,0.983193277,"['VIF', 'Hist_int']"
+SVM,0.714285714,0.716981132,0.957983193,"['VIF', 'SSIM']"
+logistic-regression,0.714285714,0.706586826,0.991596639,"['Hist_int', 'CS']"
+logistic-regression,0.714285714,0.709090909,0.983193277,"['SSIM', 'CS']"
+logistic-regression,0.714285714,0.709090909,0.983193277,"['Hist_int', 'SSIM', 'CS']"
+logistic-regression,0.708571429,0.702380952,0.991596639,"['VIF', 'Hist_int', 'CS']"
+SVM,0.708571429,0.736111111,0.890756303,"['VIF', 'Hist_int', 'CS']"
+SVM,0.708571429,0.715189873,0.949579832,"['VIF', 'Hist_int', 'SSIM']"
+logistic-regression,0.708571429,0.707317073,0.974789916,"['VIF', 'Hist_int', 'SSIM', 'CS']"
+SVM,0.708571429,0.7125,0.957983193,"['VIF', 'Hist_int', 'SSIM', 'CS']"
+SVM,0.702857143,0.727891156,0.899159664,['CS']
+logistic-regression,0.702857143,0.705521472,0.966386555,"['VIF', 'SSIM']"
+logistic-regression,0.702857143,0.708074534,0.957983193,"['VIF', 'Hist_int', 'SSIM']"
+logistic-regression,0.691428571,0.687861272,1,"['VIF', 'CS']"
+SVM,0.691428571,0.696969697,0.966386555,"['Hist_int', 'CS']"
+SVM,0.685714286,0.719178082,0.882352941,"['VIF', 'CS']"
+logistic-regression,0.68,0.68,1,['VIF']
+SVM,0.68,0.68,1,['VIF']
+SVM,0.68,0.68,1,['Hist_int']
+logistic-regression,0.68,0.68,1,['CS']
+SVM,0.668571429,0.676300578,0.983193277,"['VIF', 'Hist_int']"
+random-forest,0.6,0.678832117,0.781512605,"['VIF', 'SSIM']"
+random-forest,0.6,0.668965517,0.81512605,"['VIF', 'SSIM', 'CS']"
+random-forest,0.594285714,0.673913043,0.781512605,"['VIF', 'Hist_int', 'SSIM']"
+random-forest,0.594285714,0.664383562,0.81512605,"['VIF', 'Hist_int', 'SSIM', 'CS']"
+random-forest,0.588571429,0.666666667,0.789915966,"['SSIM', 'CS']"
+random-forest,0.582857143,0.664285714,0.781512605,"['Hist_int', 'SSIM', 'CS']"
+random-forest,0.577142857,0.661870504,0.773109244,"['VIF', 'Hist_int', 'CS']"
+random-forest,0.571428571,0.666666667,0.739495798,"['Hist_int', 'SSIM']"
+random-forest,0.565714286,0.659259259,0.74789916,"['VIF', 'CS']"
+random-forest,0.565714286,0.661654135,0.739495798,"['Hist_int', 'CS']"
+random-forest,0.56,0.659090909,0.731092437,['SSIM']
+random-forest,0.548571429,0.653846154,0.714285714,"['VIF', 'Hist_int']"
+random-forest,0.542857143,0.661157025,0.672268908,['VIF']
+random-forest,0.542857143,0.658536585,0.680672269,['Hist_int']
+decision-tree,0.542857143,0.672566372,0.638655462,"['Hist_int', 'SSIM', 'CS']"
+decision-tree,0.542857143,0.666666667,0.655462185,"['VIF', 'Hist_int', 'SSIM', 'CS']"
+decision-tree,0.537142857,0.661016949,0.655462185,['SSIM']
+random-forest,0.537142857,0.643939394,0.714285714,['CS']
+decision-tree,0.537142857,0.658333333,0.663865546,"['Hist_int', 'SSIM']"
+decision-tree,0.537142857,0.661016949,0.655462185,"['SSIM', 'CS']"
+decision-tree,0.525714286,0.660714286,0.621848739,"['VIF', 'SSIM']"
+decision-tree,0.525714286,0.617391304,0.596638655,"['VIF', 'CS']"
+decision-tree,0.525714286,0.652542373,0.647058824,"['VIF', 'Hist_int', 'SSIM']"
+decision-tree,0.52,0.622807018,0.596638655,"['Hist_int', 'CS']"
+decision-tree,0.52,0.627272727,0.579831933,"['VIF', 'Hist_int', 'CS']"
+decision-tree,0.514285714,0.619834711,0.630252101,['CS']
+decision-tree,0.502857143,0.642857143,0.605042017,['VIF']
+decision-tree,0.502857143,0.644859813,0.579831933,['Hist_int']
+decision-tree,0.502857143,0.634782609,0.613445378,"['VIF', 'Hist_int']"
+decision-tree,0.502857143,0.642201835,0.588235294,"['VIF', 'SSIM', 'CS']"
