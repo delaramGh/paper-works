@@ -14,41 +14,37 @@ import pickle
 from classification_module import create_x_y_v2, fit_and_acc
 
 
-config_4 = ["VAE", "CS", "SSIM", "CPL"]
+config_4 = ["VIF", "Hist_cor", "SSIM", "CPL"]
 
-config_31 = ["CS", "SSIM", "CPL"]
-config_32 = ["VAE", "SSIM", "CPL"]
-config_33 = ["VAE", "CS", "CPL"]
-config_34 = ["VAE", "CS", "SSIM"]
+config_31 = ["Hist_cor", "SSIM", "CPL"]
+config_32 = ["VIF", "SSIM", "CPL"]
+config_33 = ["VIF", "Hist_cor", "CPL"]
+config_34 = ["VIF", "Hist_cor", "SSIM"]
 
-config_21 = ["VAE", "CS"]
-config_22 = ["VAE", "SSIM"]
-config_23 = ["VAE","CPL"]
-config_24 = ["CS", "SSIM"]
-config_25 = ["CS", "CPL"]
+config_21 = ["VIF", "Hist_cor"]
+config_22 = ["VIF", "SSIM"]
+config_23 = ["VIF","CPL"]
+config_24 = ["Hist_cor", "SSIM"]
+config_25 = ["Hist_cor", "CPL"]
 config_26 = ["SSIM", "CPL"]
 
-config_11 = ["VAE"]
-config_12 = ["CS"]
+config_11 = ["VIF"]
+config_12 = ["Hist_cor"]
 config_13 = ["SSIM"]
 config_14 = ["CPL"]
 
-# configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
-# model_names = ["logistic-regression", "SVM", "random-forest", "decision-tree"] 
-# models = [LogisticRegression(), make_pipeline(StandardScaler(), SVC(gamma='auto')), RandomForestClassifier(n_estimators=200, random_state=0), tree.DecisionTreeClassifier()]
+configs = [config_11, config_12, config_13, config_14, config_21, config_22, config_23, config_24, config_25, config_26, config_31, config_32, config_33, config_34, config_4]
+model_names = ["logistic-regression", "SVM", "random-forest", "decision-tree"] 
+models = [LogisticRegression(), make_pipeline(StandardScaler(), SVC(gamma='auto')), RandomForestClassifier(n_estimators=200, random_state=0), tree.DecisionTreeClassifier()]
 
-
-configs = [["VAE", "CS", "SSIM", "CPL"]]
-model_names = ["random-forest"]
-models = [RandomForestClassifier(n_estimators=200, random_state=0)]
 
 
 result = []
 for j in range(len(configs)):
-    csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\test_dataset.csv"
+    csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_dataset_modified.csv"
     X, Y = create_x_y_v2(csv_file, configs[j])
 
-    effort = 0.75
+    effort = 0.50
 
     n = int(effort*X.shape[0])
     x_train = X[:n]
@@ -64,9 +60,9 @@ for j in range(len(configs)):
         print("\n")
 
 
-# import csv
-# with open('exp1_D2_configuration_0_25.csv', 'w') as f:
-#     write = csv.writer(f)
-#     write.writerow(["model", "accuracy", "precision", "recall", "config"])
-#     write.writerows(result)
+import csv
+with open('exp1_D2_configuration_0_25.csv', 'w') as f:
+    write = csv.writer(f)
+    write.writerow(["model", "accuracy", "precision", "recall", "config"])
+    write.writerows(result)
 

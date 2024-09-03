@@ -4,9 +4,11 @@ from scipy.stats import pearsonr
 
 dataset = 'cifar'  ##  cifar or smartInside
 
-csv_file = f"C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\{dataset} dataset\\correlation_dataset.csv"
+csv_file = f"C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\{dataset} dataset\\cifar_dataset_modified.csv"
 
 df = pd.read_csv(csv_file)
+
+print(df.isna().any())
 
 psnr = df["PSNR"]
 psnr = psnr/max(psnr)
@@ -27,16 +29,12 @@ wd = df["WD"]
 wd = wd/max(wd)
 
 kl = np.copy(df["KL"])
-# inf_ = kl[83]
-# for i in range(len(kl)):
-#     if kl[i] == inf_:
-#         kl[i] = 100
 kl[np.isinf(kl)] = 100
 kl[np.isnan(kl)] = 100
 kl = kl/max(kl)
 
-sss = df["SSS1"]
-sss = sss/max(sss)
+# sss = df["SSS1"]
+# sss = sss/max(sss)
 
 tsi = df["TSI"]
 tsi = tsi/max(tsi)
@@ -54,35 +52,16 @@ vif = df["VIF"]
 vif = vif/max(vif)
 
 
-# vae2d = df["VAE2D"]
-# vae2d = vae2d/max(vae2d)
-
 labels = df["label"]
-# for i in range(len(labels)):
-#         if labels[i] == 1:
-#               labels[i] = 0
-#         else:
-#               labels[i] = 1
 
 
-metrics       = [psnr,    cpl,   cs,   ssim,   mse,   wd,   kl,   sss,   tsi,    vae,   hist_cor, hist_int, vif]
-metric_labels = ['PSNR', 'CPL', 'CS', 'SSIM', 'MSE', 'WD', 'KL', 'SSS1', 'TSI', 'VAE', 'Hist_correlation', 'Hist_intersection', 'VIF']
+# metrics       = [psnr,    cpl,   cs,   ssim,   mse,   wd,   kl,   sss,   tsi,    vae,   hist_cor, hist_int, vif]
+# metric_labels = ['PSNR', 'CPL', 'CS', 'SSIM', 'MSE', 'WD', 'KL', 'SSS1', 'TSI', 'VAE', 'Hist_correlation', 'Hist_intersection', 'VIF']
+metrics       = [psnr,    cpl,   cs,   ssim,   mse,   wd,   kl,  tsi,    vae,   hist_cor, hist_int, vif]
+metric_labels = ['PSNR', 'CPL', 'CS', 'SSIM', 'MSE', 'WD', 'KL','TSI', 'VAE', 'Hist_correlation', 'Hist_intersection', 'VIF']
 for metric, metric_label in zip(metrics, metric_labels):
       print('Metric: ', metric_label, ':', np.isnan(metric).any())
 
-
-# matrix = np.zeros((len(metrics)))
-# for i in range(len(metrics)):
-#         matrix[i] = np.corrcoef(metrics[i], labels)[1, 0]
-# df2 = pd.DataFrame(matrix, index=metric_labels)
-# print(df2)
-# df2.to_csv("exp1_D2_corrolation_label.csv")
-
-
-# matrix3 = np.corrcoef(metrics)
-
-# df3 = pd.DataFrame(matrix3, index=metric_labels)
-# df3.to_csv("exp1_D2_corrolation_metrics.csv")
 
 
 matrix = np.zeros((len(metrics)))
@@ -96,10 +75,10 @@ for i in range(len(metrics)):
         res_dict['p_val'].append(corr.pvalue)
 
 df_res = pd.DataFrame(res_dict, index=metric_labels)
-df_res.to_csv(f'corr_{dataset}_pvals.csv')
+df_res.to_csv(f'corr_{dataset}_fab_pvals.csv')
 df2 = pd.DataFrame(matrix)
 print(df2)
-df2.to_csv(f"exp1_{dataset}_corrolation_label.csv")
+df2.to_csv(f"exp1_{dataset}_fab_corrolation_label.csv")
 
 
 ##  Inner correlation...
@@ -114,6 +93,6 @@ for i in range(len(metrics)):
 
 df_corr = pd.DataFrame(corr_matrix, columns=metric_labels, index=metric_labels)
 df_pval = pd.DataFrame(pval_matrix, columns=metric_labels, index=metric_labels)
-df_corr.to_csv(f'Inner_corr_{dataset}.csv')
-df_pval.to_csv(f'Inner_pval_{dataset}.csv')
+df_corr.to_csv(f'Inner_corr_{dataset}_fab.csv')
+df_pval.to_csv(f'Inner_pval_{dataset}_fab.csv')
 
