@@ -3,14 +3,19 @@ from sklearn.utils import shuffle
 from tqdm import tqdm 
 from classification_module import create_x_y_v2, fit_and_acc
 
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
 
 
-config = ["PSNR", "CS", "CPL"]
+
+config = ["VIF", "SSIM", "CS"]
 model_name = "SVM"
-model = RandomForestClassifier(n_estimators=200, random_state=0)
+# model = RandomForestClassifier(n_estimators=200, random_state=0)
+model = make_pipeline(StandardScaler(), SVC(gamma='auto', probability=True))
 efforts = [0.25, 0.5, 0.75]
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept2_cifar_all.csv"
 
 
 result = []
@@ -30,7 +35,7 @@ for effort in efforts:
 
 
 import csv
-with open('D1_baseline_exp1.csv', 'w') as f:
+with open('D2_concept2_baseline_exp1.csv', 'w') as f:
     write = csv.writer(f)
     write.writerow(["model", "config", "effort", "accuracy", "precision", "recall"])
     write.writerows(result)

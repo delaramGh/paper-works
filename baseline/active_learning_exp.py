@@ -13,26 +13,26 @@ def shuffle_dataset(dataset):
 
 
 # dataset = "..\\smartInside dataset\\test_dataset - Copy.csv"
-dataset = "..\\smartInside dataset\\test_dataset.csv"
-input = ["PSNR", "CS", "CPL"]
+dataset = "..\\cifar dataset\\concept2_cifar_all.csv"
+input = ["VIF", "SSIM", "CS"]
 model = "SVM"
 
 l = []
-threshold = 0.85
+threshold = 0.75
 split1 = 0.1
-split2 = 0.1
+split2 = 0.01
 effort = 0.25
 l.append([threshold, split1, split2])
 
-threshold = 0.9
-split1 = 0.4
-split2 = 0.03
+threshold = 0.8
+split1 = 0.25
+split2 = 0.01
 effort = 0.50
 l.append([threshold, split1, split2])
 
-threshold = 0.95
-split1 = 0.25
-split2 = 0.15
+threshold = 0.8
+split1 = 0.1
+split2 = 0.03
 effort = 0.75
 l.append([threshold, split1, split2])
 
@@ -81,7 +81,7 @@ df = pd.DataFrame({"model":model_name_list, "threshold":th_list,
                     "accuracy":acc_list, "precision":precision_list, 
                     "recall":recall_list, "human effort":human_effort_list})
 
-df.to_csv(f"D1_baseline_exp2.csv")
+df.to_csv(f"D2_concept2_baseline_exp2.csv")
 
 
 

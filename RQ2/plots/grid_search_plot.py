@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\RQ2\\results\\smartInside_dataset\\"
-df_svm = pd.read_csv(f"{path}exp2_D1_search__SVM.csv")
-df_rf = pd.read_csv(f"{path}exp2_D1_search__Random Forest.csv")
-df_lr = pd.read_csv(f"{path}exp2_D1_search__Logistic Regression.csv")
-df_dt = pd.read_csv(f"{path}exp2_D1_search__Decision Tree.csv")
+path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\RQ2\\results\\cifar_dataset\\"
+df_svm = pd.read_csv(f"{path}exp2_D2_concept2_search__SVM.csv")
+df_rf = pd.read_csv(f"{path}exp2_D2_concept2_search__Random Forest.csv")
+df_lr = pd.read_csv(f"{path}exp2_D2_concept2_search__Logistic Regression.csv")
+df_dt = pd.read_csv(f"{path}exp2_D2_concept2_search__Decision Tree.csv")
 
 # plt.figure(figsize=(10, 6))
 # plt.scatter(svm['human effort'], svm['accuracy'], color='blue', alpha=0.7, label='SVM')
@@ -29,7 +29,7 @@ sns.set_theme(style="whitegrid", font_scale=1.5)
 plt.figure(figsize=(10, 5))
 # ax = sns.boxplot(x="dataset", y="error", data=df, palette='tab10')
 df_all = pd.concat([df_svm, df_rf, df_lr, df_dt])
-ax = sns.scatterplot(data=df_all, y="accuracy", x="human effort", hue="name")
+ax = sns.scatterplot(data=df_all, y="accuracy", x="human effort", hue="model")
 
 ##  Display mean values on the plot...
 # for i, ds_name in enumerate(ds_names):

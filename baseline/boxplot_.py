@@ -21,10 +21,10 @@ import matplotlib.pyplot as plt
 
 # Load the data from the provided files
 file_paths = [
-    'results\D1_baseline_exp1.csv',
-    'results\D1_baseline_exp2.csv',
-    'results\D1_baseline_VIF.csv',
-    'results\D1_baseline_VAE.csv'
+    'results\D2_concept2_baseline_exp1.csv',
+    'results\D2_concept2_baseline_exp2.csv',
+    'results\D2_concept2_baseline_VIF.csv',
+    'results\D2_concept2_baseline_VAE.csv'
 ]
 
 # Reading the CSV files into dataframes
@@ -33,10 +33,10 @@ dfs = [pd.read_csv(file_path) for file_path in file_paths]
 
 # Extracting the necessary columns from each dataframe
 parameter = 'F1-Score'
-df1 = dfs[0][['effort', parameter]]
-df2 = dfs[1][['effort', parameter]]
-df3 = dfs[2][['effort', parameter]]
-df4 = dfs[3][['effort', parameter]]
+df1 = dfs[0][['human effort', parameter]]
+df2 = dfs[1][['human effort', parameter]]
+df3 = dfs[2][['human effort', parameter]]
+df4 = dfs[3][['human effort', parameter]]
 
 # Adding a source column to identify the source of each data point
 df1['Method'] = 'Classifier'
@@ -48,16 +48,16 @@ df4['Method'] = 'VAE'
 combined_df = pd.concat([df1, df2, df3, df4], ignore_index=True)
 
 # Creating a box plot
-sns.set_theme(style="whitegrid", font_scale=2.5)
+sns.set_theme(style="whitegrid", font_scale=1.5)
 plt.figure(figsize=(12, 6))
-ax = sns.boxplot(x='effort', y=parameter, hue='Method', data=combined_df, palette=['pink', 'orange', 'yellow', 'purple'])
+ax = sns.boxplot(x='human effort', y=parameter, hue='Method', data=combined_df, palette=['pink', 'orange', 'yellow', 'purple'])
 # ax.set_title(f'Box Plot of {parameter} vs. Effort for Different Methods')
 plt.xlabel('Human Effort (%)', fontweight='bold')
 plt.ylabel('F1-Score (%)', fontweight='bold')
 
 plt.grid(True)
 
-efforts = combined_df['effort'].unique()
+efforts = combined_df['human effort'].unique()
 for effort in efforts:
     ax.axvline(efforts.tolist().index(effort) + 0.5, linestyle='--', color='gray')
 

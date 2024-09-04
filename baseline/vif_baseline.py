@@ -13,11 +13,11 @@ def shuffle_dataset(dataset):
     df.to_csv(dataset, index=False)
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_dataset_modified.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept2_cifar_all.csv"
 df = pd.read_csv(csv_file) 
 
 
-if 1: #VIF calculation
+if 0: #VIF calculation
     vif = []
     for i in tqdm(range(df.shape[0])):
         vif.append(vifp(cv2.imread(df["original"][i]), cv2.imread(df["gen"][i])))
@@ -39,7 +39,7 @@ if 0: #plot
     plt.show()
 
 
-if 0: #treshold
+if 1: #treshold
     from sklearn import svm
     import numpy as np
 
@@ -77,7 +77,7 @@ if 0: #treshold
     df = pd.DataFrame({"accuracy":acc_list, "precision":precision_list, 
                        "recall":recall_list, "human effort":human_effort_list})
 
-    df.to_csv(f"D2_baseline_VIF.csv")
+    df.to_csv(f"D2_concept2_baseline_VIF.csv")
             
 
 

@@ -14,10 +14,13 @@ def shuffle_dataset(dataset):
     df.to_csv(dataset, index=False)
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
+# csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept1_cifar_all.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept2_cifar_all.csv"
 
 
-if 1:  #plot
+
+
+if 0:  #plot
     df = pd.read_csv(csv_file)
     human_labels = df["label"]
     human_labels = pd.Series(human_labels)
@@ -32,13 +35,13 @@ if 1:  #plot
     plt.show()
 
 
-if 0: #ُSVM Threshold
+if 1: #ُSVM Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
     recall_list = []
-    for effort in [1]:
-        for _ in tqdm(range(50)):
+    for effort in [0.25, 0.5, 0.75]:
+        for _ in tqdm(range(20)):
             shuffle_dataset(csv_file)
             df = pd.read_csv(csv_file) 
 
@@ -46,8 +49,10 @@ if 0: #ُSVM Threshold
             y = np.array(df["label"])
             
             # clf = svm.SVC(kernel="linear", class_weight='balanced')
-            clf = svm.LinearSVC(class_weight='balanced', C=1000, penalty='l1', loss='hinge')
-            clf.fit(X[:int(effort*len(y))], y[:int(effort*len(y))])
+            clf = svm.LinearSVC(class_weight='balanced', C=1000, loss='hinge')
+            X_train = X[:int(effort*len(y))]
+            Y_train = y[:int(effort*len(y))]
+            clf.fit(X_train, Y_train)
 
             pred = clf.predict(X)
             acc = 100*np.sum(pred==y)/len(y)
@@ -71,7 +76,7 @@ if 0: #ُSVM Threshold
     df = pd.DataFrame({"accuracy":acc_list, "precision":precision_list, 
                         "recall":recall_list, "human effort":human_effort_list})
 
-    df.to_csv(f"D2_baseline_VAE.csv")
+    df.to_csv(f"D2_concept2_baseline_VAE.csv")
 
 
 def find_best_th(th_list, x, y):
