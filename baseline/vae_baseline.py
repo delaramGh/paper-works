@@ -15,7 +15,7 @@ def shuffle_dataset(dataset):
 
 
 # csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept1_cifar_all.csv"
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept2_cifar_all.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept1_cifar_all.csv"
 
 
 
@@ -35,7 +35,7 @@ if 0:  #plot
     plt.show()
 
 
-if 1: #ُSVM Threshold
+if 0: #ُSVM Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
@@ -88,7 +88,7 @@ def find_best_th(th_list, x, y):
     return th_list[accs.argmax()]
 
 
-if 0: #dasti Threshold
+if 1: #dasti Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
@@ -133,5 +133,5 @@ if 0: #dasti Threshold
                         "recall":recall_list, "human effort":human_effort_list,
                         "threshold": threshold_list})
 
-    df.to_csv(f"D1_baseline_VAE.csv")
+    df.to_csv(f"D2_concept1_baseline_VAE.csv")
         

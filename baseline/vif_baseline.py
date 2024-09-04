@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from sklearn.utils import shuffle
 import numpy as np
+from tqdm import tqdm
 
 
 def shuffle_dataset(dataset):
@@ -13,7 +14,7 @@ def shuffle_dataset(dataset):
     df.to_csv(dataset, index=False)
 
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept2_cifar_all.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept1_cifar_all.csv"
 df = pd.read_csv(csv_file) 
 
 
@@ -39,7 +40,7 @@ if 0: #plot
     plt.show()
 
 
-if 1: #treshold
+if 0: #treshold
     from sklearn import svm
     import numpy as np
 
@@ -91,14 +92,14 @@ def find_best_th(th_list, x, y):
     return th_list[accs.argmax()]
 
 
-if 0: #dasti Threshold
+if 1: #dasti Threshold
     human_effort_list = []
     acc_list = []
     precision_list = []
     recall_list = []
     threshold_list = []
     for effort in [0.25, 0.5, 0.75]:
-        for _ in range(20):
+        for _ in tqdm(range(20)):
             shuffle_dataset(csv_file)
             df = pd.read_csv(csv_file) 
 
@@ -113,7 +114,7 @@ if 0: #dasti Threshold
 
             pred = np.array(x_test > th) 
             acc = 100*np.sum(pred==y_test)/len(y_test)
-            tp = np.sum(pred & y_test)
+            tp = np.sum(pred & np.array(y_test, dtype=bool))
 
             if np.sum(pred) != 0:
                 precision = 100*tp/np.sum(pred)
@@ -131,5 +132,5 @@ if 0: #dasti Threshold
                         "recall":recall_list, "human effort":human_effort_list,
                         "threshold": threshold_list})
 
-    df.to_csv(f"D1_baseline_VIF.csv")
+    df.to_csv(f"D2_concept1_baseline_VIF.csv")
         

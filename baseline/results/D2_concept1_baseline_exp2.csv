@@ -1,4 +1,4 @@
-,model,threshold,split_1,split_2,accuracy_big,precision,recall,human effort,F1-Score,accuracy
+,model,threshold,split_1,split_2,accuracy,precision,recall,human effort,F1-Score,accuracy_small
 58,Random Forest,0.95,0.4,0.08,99.23761118,99.06469213,100,0.75,0.995301488,0.992376112
 44,Random Forest,0.95,0.4,0.08,99.04701398,98.83359253,100,0.75,0.99413375,0.99047014
 56,Random Forest,0.95,0.4,0.08,98.66581957,98.374613,100,0.75,0.991806477,0.986658196

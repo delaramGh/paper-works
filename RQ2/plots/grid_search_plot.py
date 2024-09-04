@@ -3,10 +3,10 @@ import pandas as pd
 
 
 path = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\RQ2\\results\\cifar_dataset\\"
-df_svm = pd.read_csv(f"{path}exp2_D2_concept2_search__SVM.csv")
-df_rf = pd.read_csv(f"{path}exp2_D2_concept2_search__Random Forest.csv")
-df_lr = pd.read_csv(f"{path}exp2_D2_concept2_search__Logistic Regression.csv")
-df_dt = pd.read_csv(f"{path}exp2_D2_concept2_search__Decision Tree.csv")
+df_svm = pd.read_csv(f"{path}exp2_D2_concept1_search__SVM.csv")
+df_rf = pd.read_csv(f"{path}exp2_D2_concept1_search__Random Forest.csv")
+df_lr = pd.read_csv(f"{path}exp2_D2_concept1_search__Logistic Regression.csv")
+df_dt = pd.read_csv(f"{path}exp2_D2_concept1_search__Decision Tree.csv")
 
 # plt.figure(figsize=(10, 6))
 # plt.scatter(svm['human effort'], svm['accuracy'], color='blue', alpha=0.7, label='SVM')
