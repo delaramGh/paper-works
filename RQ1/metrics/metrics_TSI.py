@@ -21,7 +21,7 @@ def compute_glcm_features(image, distances, angles):
     return metrics
 
 ##  Data...
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\cifar_dataset_modified.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
 
 df = pd.read_csv(csv_file)
 img_shape = (512, 320)  #  (224, 224)

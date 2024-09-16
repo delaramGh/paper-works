@@ -15,7 +15,7 @@ model.eval()
 # # Step 2: Initialize the inference transforms
 preprocess = weights.transforms()
 
-csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept1_cifar_all.csv"
+csv_file = "C:\\Users\\ASUS\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\test_dataset.csv"
 
 
 df = pd.read_csv(csv_file)
