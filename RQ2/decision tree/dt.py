@@ -41,13 +41,13 @@ if 1:
     X, Y = shuffle(X, Y, random_state=5) #(720, 4) (720,)
     X = preprocessor.fit_transform(X)
     # Y = np.array(Y)
-    clf = tree.DecisionTreeClassifier(max_depth=5)
+    clf = tree.DecisionTreeClassifier(max_depth=4)
     clf.fit(X, Y)
     plt.figure(figsize=(12,8))  # Set the figure size
     tree.plot_tree(clf, feature_names=["DT", "LR", "RF", "SVM", "ALPHA", "BETA", "SPLIT"], 
                    class_names=["No", "Yes"], filled=False,
                    label="all", proportion=True)
-    plt.savefig("decision_tree_visualization.pdf")
+    plt.savefig("decision_tree_visualization_99_60_depth4.pdf")
     plt.show()
 
 
