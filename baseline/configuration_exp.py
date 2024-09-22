@@ -8,14 +8,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
 
-
-config = ["VIF", "SSIM", "CS"]
-model_name = "SVM"
-# model = RandomForestClassifier(n_estimators=200, random_state=0)
-model = make_pipeline(StandardScaler(), SVC(gamma='auto', probability=True))
+config = ["VIF", "MSE", "PSNR", "Hist_cor", "Hist_int", "TSI", "SSIM", "CS", "CPL", "WD", "KL", "SSS1"]#, "VAE"]
+model_name = "Random Forest"
+model = RandomForestClassifier(n_estimators=200, random_state=0)
 efforts = [0.25, 0.5, 0.75]
 
-csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\cifar dataset\\concept2_cifar_all.csv"
+csv_file = "C:\\Users\\ASUS\\Desktop\\research\\mitacs project\\paper experiments\\smartInside dataset\\all_good.csv"
 
 
 result = []
@@ -35,7 +33,7 @@ for effort in efforts:
 
 
 import csv
-with open('D2_concept2_baseline_exp1.csv', 'w') as f:
+with open('D1_New_baseline_classifier.csv', 'w') as f:
     write = csv.writer(f)
     write.writerow(["model", "config", "effort", "accuracy", "precision", "recall"])
     write.writerows(result)

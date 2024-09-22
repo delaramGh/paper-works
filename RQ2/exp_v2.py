@@ -1,13 +1,26 @@
 from active_learning_v3 import active_labeling
 import pandas as pd
 from tqdm import tqdm
+import numpy as np
 
 
 
-inputs = [["Hist_int", "SSIM", "CS", "VIF"], 
-          ["SSIM", "CS", "VIF"], 
-          ["Hist_int", "SSIM"],
-          ["VIF", "SSIM", "CS"]] #cifar
+# def replace_inf_in_csv(input_file, output_file, replace_value=10):
+#     # Read the CSV file into a DataFrame
+#     df = pd.read_csv(input_file)
+
+#     # Replace infinite values with the specified value
+#     df.replace([np.inf, -np.inf], replace_value, inplace=True)
+
+#     # Write the updated DataFrame to a new CSV file
+#     df.to_csv(output_file, index=False)
+#     print(f"Infinite values replaced and saved to {output_file}")
+
+# replace_inf_in_csv("..\\smartInside dataset\\all_dataset.csv", "..\\smartInside dataset\\all_good.csv")
+
+
+metrics = ["VIF", "MSE", "PSNR", "Hist_cor", "Hist_int", "TSI", "SSIM", "CS", "CPL", "WD", "KL", "SSS1"]
+inputs = [metrics, metrics, metrics, metrics] #cifar
 
 # inputs = [["PSNR", "CS", "CPL", "SSIM"], 
 #           ["PSNR", "CS", "CPL"], 
@@ -21,7 +34,7 @@ split1 = [0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
 split2 = [0.01, 0.03, 0.05, 0.08, 0.1, 0.15]
 
 
-dataset = "..\\cifar dataset\\concep2_cifar_all.csv"
+dataset = "..\\smartInside dataset\\all_good.csv"
 # dataset = "..\\cifar dataset\\correlation_dataset_old.csv"
 # dataset = "..\\smartInside dataset\\test_dataset.csv"
 
@@ -51,7 +64,7 @@ for model_number in range(len(models)):
                        "split_1":s1_list, "split_2":s2_list, 
                        "accuracy":acc_list, "precision":precision_list, 
                        "recall":recall_list, "human effort":human_effort_list})
-    df.to_csv(f"results\\cifar_dataset\\exp2_D2_concept2_search__{models[model_number]}.csv")
+    df.to_csv(f"results\\smartInside_dataset\\exp2_D1_NEW_search__{models[model_number]}.csv")
 
 
 
